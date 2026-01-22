@@ -103,6 +103,15 @@ K_{1}\subseteq K_{2}\subseteq \dots \subseteq K_{n}
 de cuerpos, cada uno subcuerpo de los posteriores. Cada extensión \(K_{i + 1} / K_{i}\) se llama subextensión de la torre.
 \end{definition}
 
+\begin{definition}{Clase de extensiones multiplicativa}{}
+Una clase de extensiones $\mathcal{C} = \{L_i / K_i\}_{i \in I}$ se dice multiplicativa si para cada torre $K_1 \subseteq K_2 \subseteq K_3$ se cumple
+\[
+K_3 / K_1 \in \mathcal{C} \iff K_3 / K_2 \in \mathcal{C} \text{ y } K_2 / K_1 \in \mathcal{C}.
+\]
+\end{definition}
+
+Más adelante veremos ejemplos interesantes de torres de cuerpos y clases de extensiones multiplicativas.
+
 \begin{definition}{$K$-homomorfismo}{}
 Si \(L_{1}\) y \(L_{2}\) son dos extensiones de \(K\), entonces un homomorfismo de \(L_{1} / K\) en \(L_{2} / K\) (también llamado \(K\)-homomorfismo) es un homomorfismo de cuerpos \(f:L_{1}\to L_{2}\) tal que para todo \(a\in K\), \(f(a) = a\).
 
@@ -147,59 +156,152 @@ Además los \(K\)-homomorfismos son homomorfismos de \(K\)-espacios vectoriales.
 
 Por otro lado \(K\) admite una extensión isomorfa a \(L\), a saber el conjunto \(K\cup (L\setminus f(K))\), en el que se define el producto de la forma obvia. Abusaremos a menudo de la notación y cada vez que tengamos un homomorfismo de cuerpos \(f:K\to L\), simplemente consideraremos \(K\) como subcuerpo de \(L\), identificando los elementos de \(K\) y \(f(K)\), a través de \(f\).
 
-\begin{proposition}{Propiedades básicas}{prop_basicas}
-(1) Sean \(L_{1}\) y \(L_{2}\) extensiones de \(K\). Si existe un homomorfismo de \(L_{1} / K\) en \(L_{2} / K\), entonces \([L_{1}:K]\leq [L_{2}:K]\).
+Veamos ahora diversas propiedades de los $K$-homomorfismos.
 
-(2) Todo endomorfismo de una extensión finita es un automorfismo.
-
-(3) Sea \(K\subseteq E\subseteq L\) una torre de cuerpos y sean \(B\) una base de \(E_{K}\) y \(B^{\prime}\) una base de \(L_{E}\). Entonces \(A = \{bb^{\prime}:b\in B,b^{\prime}\in B^{\prime}\}\) es una base de \(L_{K}\). En particular la clase de extensiones finitas es multiplicativa y si \(L / K\) es finita entonces
-
-\[ [L:K] = [L:E][E:K]. \]
-
-(4) Si \(L_{1}\) y \(L_{2}\) son admisibles y \(L\) es un cuerpo que contiene a \(L_{1}\) y \(L_{2}\) como subcuerpos, entonces
-
-\[ L_{1}L_{2} = \left\{\frac{a_{1}b_{1} + \cdots + a_{n}b_{n}}{a_{1}^{\prime}b_{1}^{\prime} + \cdots + a_{n}^{\prime}b_{n}^{\prime}}:a_{i},a_{i}^{\prime}\in L_{1},b_{i},b_{i}^{\prime}\in L_{2},a_{1}^{\prime}b_{1}^{\prime} + \cdots + a_{n}^{\prime}b_{n}^{\prime}\neq 0\right\} \]
-
-es el menor subcuerpo de \(L\) que contiene a \(L_{1}\) y \(L_{2}\). Este cuerpo se llama compuesto de \(L_{1}\) y \(L_{2}\) en \(L\).
-
-(5) Sean \(L / K\) una extensión de cuerpos y \(S\) un subconjunto de \(L\). Entonces el menor subanillo de \(L\) que contiene a \(K\) y a \(S\) está formado por los elementos de la forma \(p(s_{1},\ldots ,s_{n})\) con \(p\in K[X_{1},\ldots ,X_{n}]\) y \(s_{1},\ldots ,s_{n}\in S\). Además, el menor subcuerpo de \(L\) que contiene a \(K\) y a \(S\) está formado por los elementos de la forma
-
-\[ \frac{p(s_1,s_2,\ldots,s_n)}{q(s_1,s_2,\ldots,s_n)} \]
-
-donde \(n\) es un número natural arbitrario, \(p,q\in K[X_{1},\ldots ,X_{n}]\), \(s_{1},\ldots ,s_{n}\in S\) y \(q(s_{1},s_{2},\ldots ,s_{n})\neq 0\).
+\begin{proposition}{Homomorfismos y grados}{}
+Sean \(L_{1}\) y \(L_{2}\) extensiones de \(K\). Si existe un \(K\)-homomorfismo de cuerpos \(\varphi: L_{1} \to L_{2}\), entonces \([L_{1}:K] \leq [L_{2}:K]\).
 \end{proposition}
 
 \begin{proofbox}
-(1) y (2) son una consecuencia inmediata de que todo \(K\)-homomorfismo de cuerpos \(L_{1}\to L_{2}\) es un homomorfismo inyectivo de espacios vectoriales sobre \(K\) y de que todo endomorfismo inyectivo de un espacio vectorial de dimensión finita en si mismo es un isomorfismo.
-
-(3) Si \(l\in L\), entonces \(l = \sum_{i = 1}^{n}e_{i}b_{i}^{\prime}\) para ciertos \(e_{i}\in E\) y \(b_{i}\in B^{\prime}\). Cada \(e_{i}\) es una combinación lineal \(e_{i} = \sum_{j = 1}^{m_{i}}k_{ij}b_{ij}\), con \(k_{i}\in K\) y \(b_{i}\in B\). Por tanto
-
-\[ l = \sum_{i = 1}^{m_{i}}k_{ij}b_{ij}b_{i}^{\prime} \]
-
-lo que muestra que \(A\) es un conjunto generador de \(L_{K}\).
-
-Supongamos que \(\sum_{b\in B,b^{\prime}\in B^{\prime}}k_{b,b^{\prime}}b b^{\prime} = 0\), con \(k_{b,b^{\prime}}\in K\) y \(k_{b,b^{\prime}} = 0\) para casi todo \((b,b^{\prime})\in B\times B^{\prime}\). Para cada \(b^{\prime}\in B^{\prime}\), ponemos \(e_{b^{\prime}} = \sum_{b\in B}k_{b,b^{\prime}}b\in E\). Como \(k_{b,b^{\prime}} = 0\) para casi todo \((b,b^{\prime})\in B\times B^{\prime}\), se tiene que \(e_{b} = 0\) para casi todo \(b\in B\). Además, \(\sum_{b^{\prime}\in B}e_{b^{\prime}}b^{\prime} = 0\). Como \(B^{\prime}\) es linealmente independiente sobre \(E\), se tiene que \(e_{b^{\prime}} = 0\) para todo \(b^{\prime}\in B^{\prime}\). Utilizando que \(B\) es linealmente independiente sobre \(K\) deducimos que \(k_{b,b^{\prime}} = 0\) para todo \((b,b^{\prime})\in B\times B^{\prime}\), lo que muestra que \(A\) es linealmente independiente.
-
-(4) y (5) Ejercicio.
+Todo homomorfismo de cuerpos es inyectivo. Como \(\varphi\) es \(K\)-lineal, es una transformación lineal inyectiva de \(L_{1}\) a \(L_{2}\), considerados como \(K\)-espacios vectoriales. Por tanto,
+\[
+\dim_K L_{1} \leq \dim_K L_{2},
+\]
+es decir, \([L_{1}:K] \leq [L_{2}:K]\).
 \end{proofbox}
 
-Si \(L / K\) es una extensión y \(S\) es un subconjunto de \(L\), entonces \(K[S]\) denota el menor subanillo de \(L\) que contiene a \(K\) y lo llamamos subanillo de \(L\) generado por \(K\) y \(S\). El subcuerpo \(K(S)\) descrito en el apartado (5) de la Proposición 1.3 se llama extensión de \(K\) generada por \(S\). También diremos que \(K(S)\) es el cuerpo que se obtiene adjuntando a \(K\) los elementos de \(S\). Observando que la intersección de subcuerpos de un cuerpo \(L\) es otro subcuerpo de \(L\), se tiene que \(K(S)\) es la intersección de todos los subcuerpos de \(L\) que contienen a \(K\) y a \(S\). Obsérvese que si \(S_{1}\) y \(S_{2}\) son dos subconjuntos de \(L\) entonces
+\begin{proposition}{Endomorfismos de extensiones finitas}{}
+Todo endomorfismo \(K\)-lineal \(\sigma: L \to L\) de una extensión finita \(L/K\) es un automorfismo.
+\end{proposition}
 
-\[ K(S_{1})K(S_{2}) = K(S_{1}\cup S_{2}). \]
+\begin{proofbox}
+\(\sigma\) es un homomorfismo de cuerpos, luego inyectivo. Como \(L/K\) es de dimensión finita, toda transformación lineal inyectiva \(L \to L\) es también sobreyectiva. Por tanto, \(\sigma\) es biyectivo, es decir, un automorfismo.
+\end{proofbox}
 
-De la misma forma, si \(L_{1} / K\) y \(L_{2} / K\) son dos subextensiones de \(L\), entonces \(L_{1}L_{2}\) es la intersección de todos los subcuerpos de \(L\) que contienen a \(L_{1}\cup L_{2}\) y por tanto
+\begin{proposition}{Transitividad de grados}{}
+Sea \(K \subseteq E \subseteq L\) una torre de cuerpos y sean \(B\) una base de \(E\) sobre \(K\) y \(B'\) una base de \(L\) sobre \(E\). Entonces:
+\begin{enumerate}
+    \item[(a)] \(A = \{bb' : b \in B, b' \in B'\}\) es una base de \(L\) sobre \(K\).
+    \item[(b)] En particular, \([L:K] = [L:E][E:K]\).
+    \item[(c)] La clase de extensiones finitas es multiplicativa.
+\end{enumerate}
+\end{proposition}
 
-\[ L_{1}L_{2} = K(L_{1}\cup L_{2}). \]
+\begin{proofbox}
+\begin{enumerate}
+    \item[(a)] Veamos primero que es conjunto generador. Dado \(l \in L\), se escribe \(l = \sum_{i} e_i b_i'\) con \(e_i \in E\), \(b_i' \in B'\). Cada \(e_i = \sum_{j} k_{ij} b_{ij}\) con \(k_{ij} \in K\), \(b_{ij} \in B\). Luego 
+    \[
+    l = \sum_{i,j} k_{ij} b_{ij} b_i',
+    \]
+    combinación de elementos de \(A\).
+    
+    Para la independencia lineal, supongamos \(\sum_{b\in B, b'\in B'} k_{b,b'} bb' = 0\) con \(k_{b,b'} \in K\). Fijado \(b'\), sea \(e_{b'} = \sum_{b} k_{b,b'} b \in E\). Entonces \(\sum_{b'} e_{b'} b' = 0\). Como \(B'\) es linealmente independiente sobre \(E\), \(e_{b'} = 0\) para todo \(b'\). Como \(B\) es linealmente independiente sobre \(K\), \(k_{b,b'} = 0\) para todo \(b,b'\).
+    
+    \item[(b)] Se tiene \(|A| = |B| \cdot |B'|\), luego de (a) deducimos
+    \[
+    [L:K] = |A| = |B| \cdot |B'| = [E:K] \cdot [L:E].
+    \]
+    
+    \item [(c)]La clase \(\mathcal{C} = \{L/K \mid [L:K] < \infty\}\) es multiplicativa: en una torre \(K \subseteq E \subseteq L\),
+    \[
+    L/K \in \mathcal{C} \iff E/K \in \mathcal{C} \text{ y } L/E \in \mathcal{C}
+    \]
+    esto se sigue inmediatamente de (b).
+\end{enumerate}
+\end{proofbox}
 
-El concepto de compuesto de dos subextensiones se puede generalizar de forma obvia a una familia arbitraria de subextensiones: Si \(C\) es una familia de subextensiones de \(L / K\) entonces el compuesto de \(C\) es el menor subcuerpo de \(L\) que contiene a todos los elementos de \(C\) y coincide con la intersección de todos los subcuerpos de \(L\) que contienen todos los elementos de \(C\) y con \(K(\cup_{E\in C}E)\). Si \(C = \{L_{1} / K,\ldots ,L_{n} / K\}\), entonces el compuesto de \(C\) se denota por \(L_{1}\dots L_{n}\) y está formado por todos los elementos de la forma
+\begin{proposition}{Compuesto de dos extensiones admisibles}{}
+Si \(L_{1}\) y \(L_{2}\) son extensiones admisibles de \(K\) y \(L\) es un cuerpo que contiene a \(L_{1}\) y \(L_{2}\) como subcuerpos, entonces
+\[
+L_{1}L_{2} = \left\{ \frac{a_{1}b_{1} + \cdots + a_{n}b_{n}}{a_{1}'b_{1}' + \cdots + a_{n}'b_{n}'} : a_i, a_i' \in L_{1}, b_i, b_i' \in L_{2}, \sum a_i' b_i' \neq 0 \right\}
+\]
+es el menor subcuerpo de \(L\) que contiene a \(L_{1}\) y \(L_{2}\).
+\end{proposition}
 
-\[ \frac{\sum_{i = 1}^{m}a_{1i}\dots a_{ni}}{\sum_{i = 1}^{m}b_{1i}\dots b_{ni}} \]
+\begin{proofbox}
+Denotemos por \(F\) al conjunto de la derecha, que claramente está contenido en $L$. Veamos primero que es un cuerpo.
+\begin{itemize}
+    \item Claramente contiene a $0 = \frac{0_{L_1}0_{L_2}}{1_{L_1}1_{L_2}}$ y $1 = \frac{1_{L_1}1_{L_2}}{1_{L_1}1_{L_2}}$.
+    \item Dados \(x, y \in F\), sean 
+    \[
+    x = \frac{\sum_{i=1}^n a_i b_i}{\sum_{i=1}^n a_i' b_i'}, \quad
+    y = \frac{\sum_{j=1}^m c_j d_j}{\sum_{j=1}^m c_j' d_j'}
+    \]
+    con \(a_i, a_i', c_j, c_j' \in L_1\), \(b_i, b_i', d_j, d_j' \in L_2\).
+    \item Suma:
+    \[
+    x + y = \frac{(\sum a_i b_i)(\sum c_j' d_j') + (\sum c_j d_j)(\sum a_i' b_i')}{(\sum a_i' b_i')(\sum c_j' d_j')}
+    \]
+    que está en \(F\) porque numerador y denominador son sumas de productos \(ab\) con \(a \in L_1, b \in L_2\).
+    \item Producto: 
+    \[
+    xy = \frac{(\sum a_i b_i)(\sum c_j d_j)}{(\sum a_i' b_i')(\sum c_j' d_j')}
+    \]
+    también de la misma forma.
+    \item Inverso multiplicativo: si \(x \neq 0\), entonces \(x^{-1} = \frac{\sum a_i' b_i'}{\sum a_i b_i} \in F\).
+\end{itemize}
 
-con \(m\) arbitrario, \(a_{ji},b_{ji}\in L_{i}\) y \(\sum_{i = 1}^{m}b_{1i}\dots b_{ni}\neq 0\).
+Veamos ahora que \(F\) contiene a \(L_1\) y \(L_2\):
+\begin{itemize}
+    \item Para \(a \in L_1\), $a = \frac{a 1_{L_2}}{1_{L_1}1_{L_2}}$.
+    \item Para \(b \in L_2\), $b = \frac{1_{L_1} b}{1_{L_1}1_{L_2}}$.
+\end{itemize}
 
-Si \(S = \{a_{1},\ldots ,a_{n}\}\), entonces escribimos \(K[S] = K[a_{1},\ldots ,a_{n}]\) y \(K(S) = K(a_{1},\ldots ,a_{n})\). Decimos que \(L / K\) es una extensión finitamente generada si existen \(a_{1},\ldots ,a_{n}\in L\) tales que \(L = K(a_{1},\ldots ,a_{n})\) y que es simple si \(L = K(a)\) para algún \(a\in L\). En este último caso decimos que \(a\) es un elemento primitivo de \(L / K\).
+Finalmente, veamos que \(F\) es el menor. Sea \(F'\) un subcuerpo de \(L\) que contiene \(L_1\) y \(L_2\). Entonces \(F'\) contiene todas las sumas finitas \(\sum a_i b_i\) con \(a_i \in L_1, b_i \in L_2\), y también sus cocientes. Luego \(F \subseteq F'\). Como \(F\) es cuerpo que contiene \(L_1\) y \(L_2\), es el menor.
+\end{proofbox}
 
-Cuidado: No confundir extensión finita con extensión finitamente generada. ¿Cuál es la diferencia?
+\begin{proposition}{Subanillo y subcuerpo generados}{}
+Sean \(L/K\) una extensión de cuerpos y \(S \subseteq L\). Entonces:
+\begin{enumerate}
+    \item[(a)] El menor subanillo de \(L\) que contiene a \(K\) y a \(S\) es
+    \[
+    K[S] = \{ p(s_1,\dots,s_n) \mid n \in \mathbb{N}, p \in K[X_1,\dots,X_n], s_i \in S \}.
+    \]
+    \item[(b)] El menor subcuerpo de \(L\) que contiene a \(K\) y a \(S\) es
+    \[
+    K(S) = \left\{ \frac{p(s_1,\dots,s_n)}{q(s_1,\dots,s_n)} \mid n \in \mathbb{N}, p,q \in K[X_1,\dots,X_n], s_i \in S, q(s_1,\dots,s_n) \neq 0 \right\}.
+    \]
+\end{enumerate}
+\end{proposition}
+
+\begin{proofbox}
+\begin{enumerate}
+    \item[(a)] Denotemos \(R = \{ p(s_1,\dots,s_n) \mid \dots \}\). 
+    \begin{itemize}
+        \item Claramente \(K \subseteq R\) (polinomios constantes) y \(S \subseteq R\) (polinomios \(X_i\)). 
+        \item \(R\) es cerrado bajo suma y producto: dados dos elementos, juntamos los conjuntos finitos de \(s_i\) usados y los expresamos como polinomios en esas variables. La suma/producto de polinomios es un polinomio. 
+        \item Luego \(R\) es un subanillo que contiene \(K\) y \(S\). 
+        \item Si \(R'\) es otro subanillo con \(K \cup S \subseteq R'\), entonces \(R'\) contiene todos los polinomios en elementos de \(S\), luego \(R \subseteq R'\). 
+    \end{itemize}
+    Por tanto, \(R = K[S]\).
+
+    \item[(b)] Sea \(F = \{ p(s_1,\dots,s_n)/q(s_1,\dots,s_n) \mid \dots \}\). 
+    \begin{itemize}
+        \item \(F\) es un subcuerpo: suma, producto e inversos se reducen a operaciones con polinomios. 
+        \item Claramente \(K \cup S \subseteq F\). 
+        \item Si \(F'\) es un subcuerpo con \(K \cup S \subseteq F'\), entonces \(F'\) contiene todos los polinomios \(p(s_1,\dots,s_n)\) y sus cocientes, luego \(F \subseteq F'\). 
+    \end{itemize}
+    Por tanto, \(F = K(S)\).
+\end{enumerate}
+\end{proofbox}
+
+% Si \(L / K\) es una extensión y \(S\) es un subconjunto de \(L\), entonces \(K[S]\) denota el menor subanillo de \(L\) que contiene a \(K\) y lo llamamos subanillo de \(L\) generado por \(K\) y \(S\). El subcuerpo \(K(S)\) descrito en el apartado (5) de la Proposición 1.3 se llama extensión de \(K\) generada por \(S\). También diremos que \(K(S)\) es el cuerpo que se obtiene adjuntando a \(K\) los elementos de \(S\). Observando que la intersección de subcuerpos de un cuerpo \(L\) es otro subcuerpo de \(L\), se tiene que \(K(S)\) es la intersección de todos los subcuerpos de \(L\) que contienen a \(K\) y a \(S\). Obsérvese que si \(S_{1}\) y \(S_{2}\) son dos subconjuntos de \(L\) entonces
+
+% \[ K(S_{1})K(S_{2}) = K(S_{1}\cup S_{2}). \]
+
+% De la misma forma, si \(L_{1} / K\) y \(L_{2} / K\) son dos subextensiones de \(L\), entonces \(L_{1}L_{2}\) es la intersección de todos los subcuerpos de \(L\) que contienen a \(L_{1}\cup L_{2}\) y por tanto
+
+% \[ L_{1}L_{2} = K(L_{1}\cup L_{2}). \]
+
+% El concepto de compuesto de dos subextensiones se puede generalizar de forma obvia a una familia arbitraria de subextensiones: Si \(C\) es una familia de subextensiones de \(L / K\) entonces el compuesto de \(C\) es el menor subcuerpo de \(L\) que contiene a todos los elementos de \(C\) y coincide con la intersección de todos los subcuerpos de \(L\) que contienen todos los elementos de \(C\) y con \(K(\cup_{E\in C}E)\). Si \(C = \{L_{1} / K,\ldots ,L_{n} / K\}\), entonces el compuesto de \(C\) se denota por \(L_{1}\dots L_{n}\) y está formado por todos los elementos de la forma
+
+% \[ \frac{\sum_{i = 1}^{m}a_{1i}\dots a_{ni}}{\sum_{i = 1}^{m}b_{1i}\dots b_{ni}} \]
+
+% con \(m\) arbitrario, \(a_{ji},b_{ji}\in L_{i}\) y \(\sum_{i = 1}^{m}b_{1i}\dots b_{ni}\neq 0\).
+
+% Si \(S = \{a_{1},\ldots ,a_{n}\}\), entonces escribimos \(K[S] = K[a_{1},\ldots ,a_{n}]\) y \(K(S) = K(a_{1},\ldots ,a_{n})\). Decimos que \(L / K\) es una extensión finitamente generada si existen \(a_{1},\ldots ,a_{n}\in L\) tales que \(L = K(a_{1},\ldots ,a_{n})\) y que es simple si \(L = K(a)\) para algún \(a\in L\). En este último caso decimos que \(a\) es un elemento primitivo de \(L / K\).
+
+% Cuidado: No confundir extensión finita con extensión finitamente generada. ¿Cuál es la diferencia?
 
 % \begin{lemma}{Propiedades de las raíces de polinomios irreducibles}{lem_raices_irreducibles}
 % Sea \(L / K\) una extensión. Si \(\alpha \in L\) es una raíz de un polinomio irreducible \(p\) de grado \(n\) en \(K[X]\) entonces
