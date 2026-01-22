@@ -1,0 +1,62 @@
+name: Compile TEX files
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.tex'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Grant write permission to the GITHUB_TOKEN
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Get all history for proper diffing
+      
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-base \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-lang-spanish \
+            texlive-science \
+            texlive-bibtex-extra biber\
+            latexmk
+
+      - name: Compile LaTeX
+        run: |
+          latexmk -silent -jobname=Apuntes_Ecuaciones_algebraicas main.tex
+
+          if not [ -f "Apuntes_Ecuaciones_algebraicas.pdf" ]; then
+            echo "PDF file was not generated."
+            exit 1
+          fi
+          
+      - name: Clean up
+        run: |
+          latexmk -c Apuntes_Ecuaciones_algebraicas.pdf
+          rm Apuntes_Ecuaciones_algebraicas.bbl
+
+      - name: Commit PDF
+        if: success()
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          
+          git add Apuntes_Ecuaciones_algebraicas.pdf
+          
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto-compiled PDF: $(date +'%Y-%m-%d %H:%M:%S')"
+            git push
+          else
+            echo "No changes to PDF"
+          fi

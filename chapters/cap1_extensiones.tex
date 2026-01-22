@@ -1,0 +1,291 @@
+\chapter{Extensiones de cuerpos}
+
+\section{Extensiones de cuerpos}
+
+\begin{definition}{Extensión de cuerpos}{def_extension}
+Sea \(K\) un cuerpo. Una extensión de \(K\) es un cuerpo \(L\) que contiene a \(K\) como subcuerpo. En tal caso decimos que \(L / K\) es una extensión de cuerpos o simplemente una extensión.
+\end{definition}
+
+Observe que si \(L / K\) es una extensión de cuerpos, entonces \(L\) tiene una estructura natural de espacio vectorial sobre \(K\). Los vectores son los elementos de \(L\) y los escalares son los elementos de \(K\), la suma de vectores es la suma en \(L\) y el producto de escalares por vectores está bien definido puesto que los elementos de \(K\) está en \(L\). Denotaremos este espacio vectorial como \(L_{K}\) y una base de la extensión \(L / K\) es simplemente una base de este espacio vectorial.
+
+\begin{definition}{Grado de una extensión}{}
+La dimensión de \(L_{K}\) se llama grado de la extensión \(L / K\) y se representa por \([L:K]\). O sea
+\[[L:K] = \dim_K(L).\]
+\end{definition}
+
+\begin{example}{Extensión de los reales}{extension_reales}
+Tomemos $K = \R$, $L = \C$. Entonces $L/K$ es una extensión, en este caso los vectores del espacio vectorial son números complejos, y para construir una combinación lineal de ellos solo podemos emplear escalares reales.
+
+El conjunto $B = \{1,i\}$ genera a $L_K$: cualquier $z \in L_K$ se puede expresar como
+\[
+z = \operatorname{Re}(z) 1 + \operatorname{Im}(z) i, \quad \operatorname{Re}(z), \operatorname{Im}(z) \in \R.
+\]
+Además, si $a,b\in \R$ cumplen $a 1 + b i = 0 \implies a,b = 0$, por lo que $B$ es una base. De aquí deducimos que $[\C:\R] = 2$.
+\end{example}
+
+Decimos que \(L / K\) es una extensión finita si \([L:K] < \infty\). Obsérvese que si \(L / K\) es una extensión de grado \(n\) entonces la base del espacio vectorial $L_K$ tiene $n$ vectores, por tanto, según un resultado conocido de algebra lineal,
+\[
+L_{K} \simeq K^{n}.
+\]
+De aquí deducimos que, \(|L| = |K|^{n}\). Gracias a este resultado obtenemos la siguiente propisición.
+
+\begin{proposition}{}{extensiones_finitas}
+Sea $L/K$ una extensión finita.
+\begin{enumerate}
+    \item Si \(K\) es finito de orden \(q\), entonces \(L\) es finito de orden \(q^{n}\).
+    \item Si \(K\) es infinito entonces \(L\) tiene el mismo cardinal que \(K\).
+\end{enumerate}
+\end{proposition}
+
+\subsection{Ejemplos de extensiones de cuerpos}
+
+\begin{example}{}{extension_1}
+Si \(L / K\) es una extensión de cuerpos, entonces \([L:K] = 1\) si y solo si \(K = L\).
+\end{example}
+
+\begin{proofbox}
+Es inmediato que si $K=L$ entonces una base de $L_K$ es $B=\{1\}$, por lo que $[L:K]=1$. 
+
+Por otro lado, si las bases de $L_K$ tiene un solo elemento, podemos fijar una base $B=\{\alpha\}$, $\alpha \neq 0$. En concreto, la identidad debe expresarse como combinación lineal de elementos de esa base, es decir,
+\[
+1 = \lambda \alpha
+\]
+para cierto $\lambda \in K$, pero entonces debe ser $\alpha = \lambda^{-1} \in K$, por lo que cualquier elemento $a \in L$ es combinación de un escalar $b \in K$ con $\alpha$
+\[
+a = b \alpha \in K \quad \text{ ya que } \alpha \in K
+\]
+por tanto, $L\subseteq K \implies L = K$.
+\end{proofbox}
+
+\begin{example}{}{extension_2}
+Como hemos visto en el Ejemplo \ref{ex:extension_reales}, \(\mathbb{C} / \mathbb{R}\) es una extensión finita de grado 2.
+\end{example}
+
+\begin{example}{}{extension_3}
+\(\mathbb{R} / \mathbb{Q}\) y \(\mathbb{C} / \mathbb{Q}\) son extensiones de grado infinito.
+\end{example}
+
+\begin{proofbox}
+Para verlo, supongamos que fueran de grado finito. Entonces, como \(\mathbb{Q}\) es infinito, por el apartado 2 de la Proposición \ref{prop:extensiones_finitas}, \(\mathbb{R}\) y \(\mathbb{C}\) deberían tener el mismo cardinal que $\mathbb{Q}$. Sin embargo, sabemos que $\R,\C$ tienen mayor cardinal que \(\mathbb{Q}\), luego ambas extensiones deben ser de grado infinito.
+\end{proofbox}
+
+\begin{example}{}{extension_4}
+Si \(n \in \mathbb{Q}\), entonces \(\mathbb{Q}(\sqrt{n}) = \{a + b\sqrt{n}:a,b\in \mathbb{Q}\}\) es una extensión que tiene grado 1 si \(n\) es un cuadrado de un número racional y grado 2 en caso contrario pues, en el segundo caso, \(\{1,\sqrt{n}\}\) es una base de \(\mathbb{Q}(\sqrt{n}) / \mathbb{Q}\).
+\end{example}
+
+\begin{example}{}{extension_5}
+El cuerpo de fracciones \(K(X)\) del anillo de polinomios \(K[X]\) es una extensión de \(K\) de grado infinito.
+\end{example}
+
+\begin{proofbox}
+Por un resultado sobre anillos, como $K$ es un cuerpo, en concreto es un dominio, y entonces $K[X]$ también lo es. Por tanto, tiene sentido considerar el cuerpo de fracciones de $K[X]$, que denotamos $K(X)$. Claramente, $K \subseteq K(X)$\footnote{También es cierto que $K \subseteq K[X]$, pero $K[X]$ no tiene por qué ser un cuerpo.}. Para ver que la extensión es de grado infinito encontraremos un conjunto infinito de elementos linealmente independientes. De esto se deduce que cualquier base de $K(X)$ debe tener infinitos elementos. Sea 
+\[
+C = \{1, X^{-1}, X^{-2}, \dots\},
+\]
+consideremos una combinación lineal cualquiera de $m$ elementos de $C$:
+\[
+P = a_1 X^{-n_1} + a_2 X^{-n_2} + \dots + a_m X^{-n_m}, \quad n_1 \leq \dots \leq n_m
+\]
+entonces,
+\[
+P = 0 \iff X^{n_m} P = 0 \iff a_1 X^{n_m-n_1} + \dots + a_m = 0 \iff \forall i,\ a_i = 0
+\]
+ya que $X^{n_m} P$ es un polinomio en $K$ y solo puede ser cero si todos sus coeficientes son $0$.
+\end{proofbox}
+
+\subsection{Torres de cuerpos y propiedades}
+
+\begin{definition}{Torre de extensiones de cuerpos}{}
+Una torre de extensiones de cuerpos es una sucesión
+\[
+K_{1}\subseteq K_{2}\subseteq \dots \subseteq K_{n}
+\]
+de cuerpos, cada uno subcuerpo de los posteriores. Cada extensión \(K_{i + 1} / K_{i}\) se llama subextensión de la torre.
+\end{definition}
+
+\begin{definition}{$K$-homomorfismo}{}
+Si \(L_{1}\) y \(L_{2}\) son dos extensiones de \(K\), entonces un homomorfismo de \(L_{1} / K\) en \(L_{2} / K\) (también llamado \(K\)-homomorfismo) es un homomorfismo de cuerpos \(f:L_{1}\to L_{2}\) tal que para todo \(a\in K\), \(f(a) = a\).
+
+Un endomorfismo de una extensión \(L / K\) es un homomorfismo de \(L / K\) en si misma. Un isomorfismo de extensiones (o \(K\)-isomorfismo) es un homomorfismo de extensiones que es isomorfismo de cuerpos y un automorfismo de extensiones (o \(K\)-automorfismo) es un isomorfismo de una extensión de \(K\) en si misma.
+\end{definition}
+
+Obsérvese que el conjunto de los automorfismos de una extensión \(L / K\) es un grupo que llamaremos grupo de Galois de \(L / K\), en el que el producto es la composición de aplicaciones, y que denotaremos por
+\[
+\Gal(L / K).
+\]
+
+\begin{definition}{Subextensión}{}
+Una subextensión de una extensión de cuerpos \(L / K\) es un subcuerpo \(M\) de \(L\) que contiene a \(K\):
+\[
+K \subseteq M \subseteq L.
+\]
+
+Dos extensiones \(L_{1}\) y \(L_{2}\) de un cuerpo \(K\) se dice que son admisibles si existe un cuerpo \(L\) que es extensión de \(L_{1}\) y \(L_{2}\), o lo que es lo mismo, si ambas son subextensiones de una extensión común \(L / K\).
+
+\begin{center}
+\begin{tikzcd}[column sep=small, row sep=large]
+& L & \\
+L_1 \arrow[ur, hook] & & L_2 \arrow[ul, hook'] \\
+& K \arrow[ul, hook] \arrow[ur, hook'] &
+\end{tikzcd}
+\end{center}
+\end{definition}
+
+Por convenio, en todos los cuerpos suponemos que \(0\neq 1\). Eso implica que todos los homomorfismos entre cuerpos son inyectivos.
+\begin{proofbox}
+Sea $f : K \to L$ un homomorfismo de cuerpos. Sea $x \in \ker{f}$, si suponemos que $x \neq 0$, entonces
+\[
+1_L = f(1_K) = f(x x^{-1}) = f(x)f(x^{-1}) = 0 
+\]
+lo cual es contradictorio. Por tanto, $\ker{f} = \{1_K\}$, por lo que
+\[
+f(x) = f(y) \iff 0 = f(y)-f(x) = f(y-x) \iff y-x = 0 \iff y = x.
+\]
+\end{proofbox}
+
+Además los \(K\)-homomorfismos son homomorfismos de \(K\)-espacios vectoriales. De esta forma siempre que exista un homomorfismo de cuerpos \(f:K\to L\), el cuerpo \(L\) contiene un subcuerpo isomorfo a \(K\), la imagen \(f(K)\) de \(f\).
+
+Por otro lado \(K\) admite una extensión isomorfa a \(L\), a saber el conjunto \(K\cup (L\setminus f(K))\), en el que se define el producto de la forma obvia. Abusaremos a menudo de la notación y cada vez que tengamos un homomorfismo de cuerpos \(f:K\to L\), simplemente consideraremos \(K\) como subcuerpo de \(L\), identificando los elementos de \(K\) y \(f(K)\), a través de \(f\).
+
+\begin{proposition}{Propiedades básicas}{prop_basicas}
+(1) Sean \(L_{1}\) y \(L_{2}\) extensiones de \(K\). Si existe un homomorfismo de \(L_{1} / K\) en \(L_{2} / K\), entonces \([L_{1}:K]\leq [L_{2}:K]\).
+
+(2) Todo endomorfismo de una extensión finita es un automorfismo.
+
+(3) Sea \(K\subseteq E\subseteq L\) una torre de cuerpos y sean \(B\) una base de \(E_{K}\) y \(B^{\prime}\) una base de \(L_{E}\). Entonces \(A = \{bb^{\prime}:b\in B,b^{\prime}\in B^{\prime}\}\) es una base de \(L_{K}\). En particular la clase de extensiones finitas es multiplicativa y si \(L / K\) es finita entonces
+
+\[ [L:K] = [L:E][E:K]. \]
+
+(4) Si \(L_{1}\) y \(L_{2}\) son admisibles y \(L\) es un cuerpo que contiene a \(L_{1}\) y \(L_{2}\) como subcuerpos, entonces
+
+\[ L_{1}L_{2} = \left\{\frac{a_{1}b_{1} + \cdots + a_{n}b_{n}}{a_{1}^{\prime}b_{1}^{\prime} + \cdots + a_{n}^{\prime}b_{n}^{\prime}}:a_{i},a_{i}^{\prime}\in L_{1},b_{i},b_{i}^{\prime}\in L_{2},a_{1}^{\prime}b_{1}^{\prime} + \cdots + a_{n}^{\prime}b_{n}^{\prime}\neq 0\right\} \]
+
+es el menor subcuerpo de \(L\) que contiene a \(L_{1}\) y \(L_{2}\). Este cuerpo se llama compuesto de \(L_{1}\) y \(L_{2}\) en \(L\).
+
+(5) Sean \(L / K\) una extensión de cuerpos y \(S\) un subconjunto de \(L\). Entonces el menor subanillo de \(L\) que contiene a \(K\) y a \(S\) está formado por los elementos de la forma \(p(s_{1},\ldots ,s_{n})\) con \(p\in K[X_{1},\ldots ,X_{n}]\) y \(s_{1},\ldots ,s_{n}\in S\). Además, el menor subcuerpo de \(L\) que contiene a \(K\) y a \(S\) está formado por los elementos de la forma
+
+\[ \frac{p(s_1,s_2,\ldots,s_n)}{q(s_1,s_2,\ldots,s_n)} \]
+
+donde \(n\) es un número natural arbitrario, \(p,q\in K[X_{1},\ldots ,X_{n}]\), \(s_{1},\ldots ,s_{n}\in S\) y \(q(s_{1},s_{2},\ldots ,s_{n})\neq 0\).
+\end{proposition}
+
+\begin{proofbox}
+(1) y (2) son una consecuencia inmediata de que todo \(K\)-homomorfismo de cuerpos \(L_{1}\to L_{2}\) es un homomorfismo inyectivo de espacios vectoriales sobre \(K\) y de que todo endomorfismo inyectivo de un espacio vectorial de dimensión finita en si mismo es un isomorfismo.
+
+(3) Si \(l\in L\), entonces \(l = \sum_{i = 1}^{n}e_{i}b_{i}^{\prime}\) para ciertos \(e_{i}\in E\) y \(b_{i}\in B^{\prime}\). Cada \(e_{i}\) es una combinación lineal \(e_{i} = \sum_{j = 1}^{m_{i}}k_{ij}b_{ij}\), con \(k_{i}\in K\) y \(b_{i}\in B\). Por tanto
+
+\[ l = \sum_{i = 1}^{m_{i}}k_{ij}b_{ij}b_{i}^{\prime} \]
+
+lo que muestra que \(A\) es un conjunto generador de \(L_{K}\).
+
+Supongamos que \(\sum_{b\in B,b^{\prime}\in B^{\prime}}k_{b,b^{\prime}}b b^{\prime} = 0\), con \(k_{b,b^{\prime}}\in K\) y \(k_{b,b^{\prime}} = 0\) para casi todo \((b,b^{\prime})\in B\times B^{\prime}\). Para cada \(b^{\prime}\in B^{\prime}\), ponemos \(e_{b^{\prime}} = \sum_{b\in B}k_{b,b^{\prime}}b\in E\). Como \(k_{b,b^{\prime}} = 0\) para casi todo \((b,b^{\prime})\in B\times B^{\prime}\), se tiene que \(e_{b} = 0\) para casi todo \(b\in B\). Además, \(\sum_{b^{\prime}\in B}e_{b^{\prime}}b^{\prime} = 0\). Como \(B^{\prime}\) es linealmente independiente sobre \(E\), se tiene que \(e_{b^{\prime}} = 0\) para todo \(b^{\prime}\in B^{\prime}\). Utilizando que \(B\) es linealmente independiente sobre \(K\) deducimos que \(k_{b,b^{\prime}} = 0\) para todo \((b,b^{\prime})\in B\times B^{\prime}\), lo que muestra que \(A\) es linealmente independiente.
+
+(4) y (5) Ejercicio.
+\end{proofbox}
+
+Si \(L / K\) es una extensión y \(S\) es un subconjunto de \(L\), entonces \(K[S]\) denota el menor subanillo de \(L\) que contiene a \(K\) y lo llamamos subanillo de \(L\) generado por \(K\) y \(S\). El subcuerpo \(K(S)\) descrito en el apartado (5) de la Proposición 1.3 se llama extensión de \(K\) generada por \(S\). También diremos que \(K(S)\) es el cuerpo que se obtiene adjuntando a \(K\) los elementos de \(S\). Observando que la intersección de subcuerpos de un cuerpo \(L\) es otro subcuerpo de \(L\), se tiene que \(K(S)\) es la intersección de todos los subcuerpos de \(L\) que contienen a \(K\) y a \(S\). Obsérvese que si \(S_{1}\) y \(S_{2}\) son dos subconjuntos de \(L\) entonces
+
+\[ K(S_{1})K(S_{2}) = K(S_{1}\cup S_{2}). \]
+
+De la misma forma, si \(L_{1} / K\) y \(L_{2} / K\) son dos subextensiones de \(L\), entonces \(L_{1}L_{2}\) es la intersección de todos los subcuerpos de \(L\) que contienen a \(L_{1}\cup L_{2}\) y por tanto
+
+\[ L_{1}L_{2} = K(L_{1}\cup L_{2}). \]
+
+El concepto de compuesto de dos subextensiones se puede generalizar de forma obvia a una familia arbitraria de subextensiones: Si \(C\) es una familia de subextensiones de \(L / K\) entonces el compuesto de \(C\) es el menor subcuerpo de \(L\) que contiene a todos los elementos de \(C\) y coincide con la intersección de todos los subcuerpos de \(L\) que contienen todos los elementos de \(C\) y con \(K(\cup_{E\in C}E)\). Si \(C = \{L_{1} / K,\ldots ,L_{n} / K\}\), entonces el compuesto de \(C\) se denota por \(L_{1}\dots L_{n}\) y está formado por todos los elementos de la forma
+
+\[ \frac{\sum_{i = 1}^{m}a_{1i}\dots a_{ni}}{\sum_{i = 1}^{m}b_{1i}\dots b_{ni}} \]
+
+con \(m\) arbitrario, \(a_{ji},b_{ji}\in L_{i}\) y \(\sum_{i = 1}^{m}b_{1i}\dots b_{ni}\neq 0\).
+
+Si \(S = \{a_{1},\ldots ,a_{n}\}\), entonces escribimos \(K[S] = K[a_{1},\ldots ,a_{n}]\) y \(K(S) = K(a_{1},\ldots ,a_{n})\). Decimos que \(L / K\) es una extensión finitamente generada si existen \(a_{1},\ldots ,a_{n}\in L\) tales que \(L = K(a_{1},\ldots ,a_{n})\) y que es simple si \(L = K(a)\) para algún \(a\in L\). En este último caso decimos que \(a\) es un elemento primitivo de \(L / K\).
+
+Cuidado: No confundir extensión finita con extensión finitamente generada. ¿Cuál es la diferencia?
+
+% \begin{lemma}{Propiedades de las raíces de polinomios irreducibles}{lem_raices_irreducibles}
+% Sea \(L / K\) una extensión. Si \(\alpha \in L\) es una raíz de un polinomio irreducible \(p\) de grado \(n\) en \(K[X]\) entonces
+
+% (1) \(K[\alpha] = K(\alpha)\)
+
+% (2) Si \(q\in K[X]\), entonces \(q(\alpha) = 0\) si y solo si \(p\) divide a \(q\) en \(K[X]\)
+
+% (3) \(1,\alpha ,\alpha^{2},\ldots ,\alpha^{n - 1}\) es una base de \(K(\alpha)_{K}\). En particular, \([K(\alpha):K] = n\)
+% \end{lemma}
+
+% \begin{proofbox}
+% (1) y (2) Consideremos el homomorfismo de evaluación en \(\alpha\) \(S = S_{\alpha}:K[X]\to L\), y sea \(I = \ker S = \{q\in K[X]:q(\alpha) = 0\}\). Como obviamente \(I\) es un ideal propio de \(K[X]\) y \(\alpha\) es raíz de \(p\) se tiene \((p)\subseteq I\subset K[X]\). Pero \((p)\) es un ideal maximal de \(K[X]\), pues \(K[X]\) es un DIP. Concluimos que \(I = (p)\) y, del Primer Teorema de Isomorfía deducimos que \(K[\alpha] = \operatorname{Im}S\simeq K[X] / (p)\), que es un cuerpo pues \((p)\) es un ideal maximal de \(K[X]\). Esto implica que \(K[\alpha] = K(\alpha)\) y que para todo \(q\in K[X]\) se verifica \(q(\alpha) = 0\) si y solo si \(p|q\) en \(K[X]\).
+
+% (3) Si \(\beta \in K[\alpha]\), entonces \(b = f(\alpha)\) para algún \(f\in K[X]\). Como el grado define una función euclídea en \(K[X]\), existen \(q,r\in K[X]\) tales que \(f = qp + r\) y \(m = \mathrm{gr}(r) < \mathrm{gr}(p) = n\). Entonces \(\beta = f(\alpha) = r(\alpha) = r_{0} + r_{1}\alpha +r_{2}\alpha^{2}\dots +r_{m}\alpha^{m}\). Esto prueba que \(1,\alpha ,\ldots ,\alpha^{n - 1}\) genera \(K(\alpha)_K\). Para demostrar que son linealmente independientes ponemos \(\sum_{i = 0}^{n - 1}a_{i}\alpha^{i} = 0\), con \(k_{i}\in K\). Entonces \(\alpha\) es raíz del polinomio \(a = \sum_{i = 0}^{n - 1}a_{i}X^{i}\), es decir \(a\in KerS = (p)\). Como \(n = \mathrm{gr}(p) > \mathrm{gr}(a)\), deducimos que \(a = 0\), es decir \(a_{i} = 0\) para todo \(i\).
+% \end{proofbox}
+
+% \section{Adjunción de raíces}
+
+% El siguiente teorema muestra que todos los polinomios no constantes tienen alguna raíz en algún cuerpo.
+
+% \begin{theorem}{Teorema de Kronecker}{thm_kronecker}
+% Si \(K\) es un cuerpo y \(p\in K[X]\setminus K\), entonces existe una extensión \(L\) de \(K\) que contiene una raíz de \(p\).
+% \end{theorem}
+
+% \begin{proofbox}
+% Como \(p\) es un elemento no nulo ni invertible de \(K[X]\) y este es un DFU, \(p\) es divisible en \(K[X]\) por un polinomio irreducible y todas las raíces de este divisor son raíces de \(p\). Por tanto podemos suponer que \(p\) es irreducible. Eso implica que \((p)\) es un ideal maximal de \(K[X]\), pues este último es un DIP. Entonces \(L = K[X] / (p)\) es un cuerpo. La composición de la inclusión \(K\to K[X]\) y la proyección \(K[X]\to L = K[X] / (p)\) es un homomorfismo (inyectivo) de cuerpos y por tanto podemos considerar \(L\) como una extensión de \(K\). Para acabar la demostración basta ver que \(a = X + (p)\) es una raíz de \(p\). En efecto, \(p(a) = p(X + (p)) = p + (p) = (p)\), que es el cero del anillo \(L\).
+% \end{proofbox}
+
+% Por tanto, si \(p\in K[X]\) es un polinomio no constante, entonces existe una extensión \(L / K\) que contiene una raíz \(\alpha\) de \(p\) y \(K(\alpha)\) es la menor subextensión de \(L / K\) que contiene a \(\alpha\).
+
+% Decimos que un polinomio \(p\in K[X]\setminus K\) es completamente factorizable sobre \(K\) si es producto de polinomios de grado 1, o lo que es lo mismo si \(p = a(X - \alpha_{1})\dots (X - \alpha_{n})\) para ciertos \(a,\alpha_{1},\ldots ,\alpha_{n}\in K\). En tal caso las raíces de \(p\) son \(\alpha_{1},\ldots ,\alpha_{n}\). Por ejemplo
+
+% \[ X^{3} - 1 = (X - 1)(X^{2} + X + 1) = (X - 1)\left(X - \frac{-1 + \sqrt{-3}}{2}\right)\left(X - \frac{-1 - \sqrt{-3}}{2}\right) \]
+
+% es completamente factorizable sobre \(\mathbb{C}\), pero no sobre \(\mathbb{Q}\) ni \(\mathbb{R}\). El Teorema de Kronecker afirma que cada polinomio no constante tiene una raíz en alguna extensión. De hecho podemos decir algo más.
+
+% \begin{corollary}{Factorización completa en alguna extensión}{cor_factorizacion}
+% Si \(K\) es un cuerpo y \(p\in K[X]\setminus K\), entonces \(p\) es completamente factorizable en alguna extensión de \(K\).
+% \end{corollary}
+
+% \begin{proofbox}
+% Por inducción sobre el grado de \(p\). Si el grado de \(p\) es 1, no hay nada que demostrar. Si el grado de \(p\) es mayor que 1 entonces \(p\) tiene una raíz \(\alpha\) en alguna extensión \(E\) de \(K\). Entonces \(p = (X - \alpha)q\) para algún \(q\in E[X]\setminus E\). Por hipótesis de inducción \(q\) es completamente factorizable en alguna extensión \(L\) de \(E\), es decir \(q\) es producto de polinomios de \(L[X]\) de grado menor o igual que 1. Por tanto, también \(p\) es producto de polinomios de \(L[X]\) de grado menor o igual que 2.
+% \end{proofbox}
+
+% Nuestro objetivo principal es establecer un criterio de cuándo un polinomio es resoluble por radicales que es precisamente cuando sus raíces se puedan expresar en sucesivas extensiones en las que en cada paso se adjunta una raíz \(n\)-ésima de elementos del cuerpo anterior. Para formalizar esto introducimos las siguientes definiciones:
+
+% \begin{definition}{Torre radical y extensión radical}{def_torre_radical}
+% Una torre radical es una torre de cuerpos
+
+% \[ E_0\subseteq E_1\subseteq \dots \subseteq E_n \]
+
+% tales que para cada \(i = 1,\ldots ,n\), existen \(n_i\geq 1\) y \(\alpha_{i}\in E_{i}\) tal que \(E_{i} = E_{i - 1}(\alpha_{i})\) y \(\alpha^{n_i}\in E_{i - 1}\).
+
+% Una extensión de cuerpos \(L / K\) se dice que es radical si existe una torre radical
+
+% \[ K = E_0\subseteq E_1\subseteq \dots \subseteq E_n = L. \]
+
+% Una ecuación polinómica \(P(X) = 0\), con \(P\in K[X]\), se dice que es resoluble por radicales sobre \(K\) si existe una extensión radical \(L / K\) tal que \(P\) es completamente factorizable en \(L\). En tal caso también se dice que el polinomio \(P\) es resoluble por radicales sobre \(K\).
+% \end{definition}
+
+% O sea si suponemos que \(P\in K[X]\) entonces \(P\) es resoluble por radicales sobre \(K\) si \(K\) tiene una extensión radical que contiene todas las raíces de \(P\) y queremos descubrir cuándo pasa eso. Para llegar a ello tenemos que recorrer un largo camino que se completará en los dos últimos capítulos.
+
+% Recordemos que si \(\sigma :K\to E\) es un homomorfismo de anillos, entonces \(\sigma\) tiene una única extensión a un homomorfismo entre los anillos de polinomios, que seguiremos denotando por \(\sigma :K[X]\to E[X]\) tal que \(\sigma (X) = X\). Este homomorfismo se comporta bien sobre las raíces.
+
+% \begin{lemma}{Comportamiento de homomorfismos con raíces}{lem_hom_raices}
+% Sean \(\sigma :E\to L\) un homomorfismo de cuerpos y \(p\in E[X]\). Si \(\alpha\) es una raíz de \(p\) en \(E\) entonces \(\sigma (\alpha)\) es una raíz de \(\sigma (p)\).
+
+% Si \(E / K\) y \(L / K\) son extensiones de un cuerpo \(K\), \(p\in K[X]\) y \(\sigma\) es un \(K\)-homomorfismo entonces \(\sigma\) se restringe a una aplicación inyectiva del conjunto de las raíces de \(p\) en \(E\) al conjunto de las raíces de \(p\) en \(L\).
+
+% En particular, si \(E = L\) (es decir, si \(\sigma \in \operatorname{Gal}(L / K)\)), entonces esta restricción de \(\sigma\) es una permutación del conjunto de las raíces de \(p\) en \(L\).
+% \end{lemma}
+
+% \begin{proofbox}
+% Si \(p = p_0 + p_1X + \dots +p_nX^n\), entonces
+
+% \[ \sigma (p)(\sigma (\alpha)) = (\sigma (p_0) + \sigma (p_1)X + \sigma (p_1)X^2 +\dots +\sigma (p_n)X^n)(\sigma (\alpha)) \]
+% \[ = \sigma (p_0) + \sigma (p_1)\sigma (\alpha) + \sigma (p_1)\sigma (\alpha)^2 +\dots +\sigma (p_n)\sigma (\alpha)^n \]
+% \[ = \sigma (p_0 + p_1\alpha +p_1\alpha^2 +\dots +p_n\alpha^n) \]
+% \[ = \sigma (p(\alpha)) = \sigma (0) = 0. \]
+
+% Esto prueba la primera afirmación. Las otras dos afirmaciones son consecuencias inmediatas de la primera.
+% \end{proofbox}
+
+% \begin{lemma}{Lema de Extensión}{lem_extension}
+% Sea \(\sigma :K_1\to K_2\) un homomorfismo de cuerpos y sea \(p\in K_1[X]\) un polinomio irreducible. Sean \(L_1 / K_1\) y \(L_2 / K_2\) dos extensiones de cuerpos y sean \(\alpha_1\in L_1\) y \(\alpha_2\in L_2\) con \(\alpha_1\) una raíz de \(p\).
+
+% Entonces existe un homomorfismo \(\tilde{\sigma}:K_1(\alpha_1)\to K_2(\alpha_2)\) tal que \(\tilde{\sigma}|_{K_1} = \sigma\) y \(\tilde{\sigma} (\alpha_1) = \alpha_2\) si y solo si \(\alpha_2\) es una raíz del polinomio \(\sigma (p)\). En tal caso sólo hay un homomorfismo \(\tilde{\sigma}\) que satisfaga la condición indicada y si además, \(\sigma\) es un isomorfismo, entonces también \(\tilde{\sigma}\) es un isomorfismo.
+% \end{lemma}

@@ -1,0 +1,62 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Modern Notes Template
+% Author: Jesús González Abril
+%
+% Custom environments:
+%   definition, theorem, lemma, corollary, proposition, example
+%     - All share a common numbering scheme according to subsections.
+%   proofbox, remark
+%     - Not numbered.
+% 
+% Additional commands can be defined in /src/commands.tex
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{report}
+
+% Page dimensions
+\usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm,marginparwidth=2cm]{geometry} 
+
+% Main packages
+\usepackage[spanish]{babel}
+\usepackage{amsmath} 
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz-cd}
+
+% Custom fonts
+\usepackage[T1]{fontenc}
+
+% References and bibliography
+\usepackage{hyperref}
+\usepackage[backend=biber,style=alphabetic,sorting=ynt]{biblatex}
+\addbibresource{src/bibliography.bib}
+
+% Additional macros
+\input{src/theorems.tex}
+\input{src/commands.tex}
+
+\title{
+    Cielo\\ Saga de la Divina Comedia \\
+    \vspace{1cm} \large Universidad de Murcia}
+
+\author{Jesús González Abril}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+% Chapters
+\input{chapters/cap1_extensiones}
+
+% Bibliography
+\nocite{*}
+\printbibliography[
+    heading=bibintoc
+]
+
+\end{document}
