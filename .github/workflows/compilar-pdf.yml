@@ -26,7 +26,6 @@ jobs:
             texlive-latex-base \
             texlive-latex-recommended \
             texlive-latex-extra \
-            texlive-fonts-recommended \
             texlive-lang-spanish \
             texlive-science \
             texlive-bibtex-extra biber\
