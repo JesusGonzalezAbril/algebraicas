@@ -210,12 +210,12 @@ Sea \(K \subseteq E \subseteq L\) una torre de cuerpos y sean \(B\) una base de 
 \end{enumerate}
 \end{proofbox}
 
-\begin{proposition}{Compuesto de dos extensiones admisibles}{}
+\begin{proposition}{Compuesto de dos extensiones admisibles}{compuesto}
 Si \(L_{1}\) y \(L_{2}\) son extensiones admisibles de \(K\) y \(L\) es un cuerpo que contiene a \(L_{1}\) y \(L_{2}\) como subcuerpos, entonces
 \[
 L_{1}L_{2} = \left\{ \frac{a_{1}b_{1} + \cdots + a_{n}b_{n}}{a_{1}'b_{1}' + \cdots + a_{n}'b_{n}'} : a_i, a_i' \in L_{1}, b_i, b_i' \in L_{2}, \sum a_i' b_i' \neq 0 \right\}
 \]
-es el menor subcuerpo de \(L\) que contiene a \(L_{1}\) y \(L_{2}\).
+es el menor subcuerpo de \(L\) que contiene a \(L_{1}\) y \(L_{2}\), lo llamamos compuesto de $L_1$ y $L_2$ en $L$.
 \end{proposition}
 
 \begin{proofbox}
@@ -250,7 +250,7 @@ Veamos ahora que \(F\) contiene a \(L_1\) y \(L_2\):
 Finalmente, veamos que \(F\) es el menor. Sea \(F'\) un subcuerpo de \(L\) que contiene \(L_1\) y \(L_2\). Entonces \(F'\) contiene todas las sumas finitas \(\sum a_i b_i\) con \(a_i \in L_1, b_i \in L_2\), y también sus cocientes. Luego \(F \subseteq F'\). Como \(F\) es cuerpo que contiene \(L_1\) y \(L_2\), es el menor.
 \end{proofbox}
 
-\begin{proposition}{Subanillo y subcuerpo generados}{}
+\begin{proposition}{Subanillo y subcuerpo generados}{cuerpo_generado}
 Sean \(L/K\) una extensión de cuerpos y \(S \subseteq L\). Entonces:
 \begin{enumerate}
     \item[(a)] El menor subanillo de \(L\) que contiene a \(K\) y a \(S\) es
@@ -285,39 +285,84 @@ Sean \(L/K\) una extensión de cuerpos y \(S \subseteq L\). Entonces:
 \end{enumerate}
 \end{proofbox}
 
-% Si \(L / K\) es una extensión y \(S\) es un subconjunto de \(L\), entonces \(K[S]\) denota el menor subanillo de \(L\) que contiene a \(K\) y lo llamamos subanillo de \(L\) generado por \(K\) y \(S\). El subcuerpo \(K(S)\) descrito en el apartado (5) de la Proposición 1.3 se llama extensión de \(K\) generada por \(S\). También diremos que \(K(S)\) es el cuerpo que se obtiene adjuntando a \(K\) los elementos de \(S\). Observando que la intersección de subcuerpos de un cuerpo \(L\) es otro subcuerpo de \(L\), se tiene que \(K(S)\) es la intersección de todos los subcuerpos de \(L\) que contienen a \(K\) y a \(S\). Obsérvese que si \(S_{1}\) y \(S_{2}\) son dos subconjuntos de \(L\) entonces
+Analicemos el contenido de la Proposición \ref{prop:cuerpo_generado}. Si \(L / K\) es una extensión y \(S\) es un subconjunto de \(L\), entonces \(K[S]\) denota el menor subanillo de \(L\) que contiene a \(K\) y lo llamamos subanillo de \(L\) generado por \(K\) y \(S\). Por otro lado, el subcuerpo \(K(S)\) se llama extensión de \(K\) generada por \(S\). También diremos que \(K(S)\) es el cuerpo que se obtiene adjuntando a \(K\) los elementos de \(S\).
 
-% \[ K(S_{1})K(S_{2}) = K(S_{1}\cup S_{2}). \]
+Observando que la intersección de subcuerpos de un cuerpo \(L\) es otro subcuerpo de \(L\), se tiene que \(K(S)\) es la intersección de todos los subcuerpos de \(L\) que contienen a \(K\) y a \(S\). Obsérvese que si \(S_{1}\) y \(S_{2}\) son dos subconjuntos de \(L\) entonces
+\[ 
+K(S_{1})K(S_{2}) = K(S_{1}\cup S_{2}).
+\]
 
-% De la misma forma, si \(L_{1} / K\) y \(L_{2} / K\) son dos subextensiones de \(L\), entonces \(L_{1}L_{2}\) es la intersección de todos los subcuerpos de \(L\) que contienen a \(L_{1}\cup L_{2}\) y por tanto
+De la misma forma, si \(L_{1} / K\) y \(L_{2} / K\) son dos subextensiones de \(L\), entonces \(L_{1}L_{2}\) es la intersección de todos los subcuerpos de \(L\) que contienen a \(L_{1}\cup L_{2}\) y por tanto
+\[
+L_{1}L_{2} = K(L_{1}\cup L_{2}).
+\]
 
-% \[ L_{1}L_{2} = K(L_{1}\cup L_{2}). \]
+Por otro lado, el concepto de compuesto de dos subextensiones, presentado en la Proposición \ref{prop:compuesto}, se puede generalizar de forma obvia a una familia arbitraria de subextensiones. Si \(C\) es una familia de subextensiones de \(L / K\) entonces el compuesto de \(C\) es el menor subcuerpo de \(L\) que contiene a todos los elementos de \(C\) y coincide con la intersección de todos los subcuerpos de \(L\) que contienen todos los elementos de \(C\) y con \(K(\cup_{E\in C}E)\). Si \(C = \{L_{1} / K,\ldots ,L_{n} / K\}\), entonces el compuesto de \(C\) se denota por \(L_{1}\dots L_{n}\) y está formado por todos los elementos de la forma
+\[
+\frac{\sum_{i = 1}^{m}a_{1i}\dots a_{ni}}{\sum_{i = 1}^{m}b_{1i}\dots b_{ni}}
+\]
+con \(m\) arbitrario, \(a_{ji},b_{ji}\in L_{i}\) y \(\sum_{i = 1}^{m}b_{1i}\dots b_{ni}\neq 0\).
 
-% El concepto de compuesto de dos subextensiones se puede generalizar de forma obvia a una familia arbitraria de subextensiones: Si \(C\) es una familia de subextensiones de \(L / K\) entonces el compuesto de \(C\) es el menor subcuerpo de \(L\) que contiene a todos los elementos de \(C\) y coincide con la intersección de todos los subcuerpos de \(L\) que contienen todos los elementos de \(C\) y con \(K(\cup_{E\in C}E)\). Si \(C = \{L_{1} / K,\ldots ,L_{n} / K\}\), entonces el compuesto de \(C\) se denota por \(L_{1}\dots L_{n}\) y está formado por todos los elementos de la forma
+Un caso importante se presenta cuando el conjunto $S$ es finito. Si \(S = \{a_{1},\ldots ,a_{n}\}\), entonces escribimos \(K[S] = K[a_{1},\ldots ,a_{n}]\) y \(K(S) = K(a_{1},\ldots ,a_{n})\). La siguiente definición muestra la importancia del caso $S$ finito.
 
-% \[ \frac{\sum_{i = 1}^{m}a_{1i}\dots a_{ni}}{\sum_{i = 1}^{m}b_{1i}\dots b_{ni}} \]
+\begin{definition}{Extensión finitamente generada y extensión simple}{}
+Decimos que \(L / K\) es una extensión finitamente generada si existen \(a_{1},\ldots ,a_{n}\in L\) tales que \(L = K(a_{1},\ldots ,a_{n})\) y que es simple si \(L = K(a)\) para algún \(a\in L\). En este último caso decimos que \(a\) es un elemento primitivo de \(L / K\).
+\end{definition}
 
-% con \(m\) arbitrario, \(a_{ji},b_{ji}\in L_{i}\) y \(\sum_{i = 1}^{m}b_{1i}\dots b_{ni}\neq 0\).
+\begin{remark}
+Por lo general, una extensión finitamente generada no tiene que ser finita. En el Ejemplo \ref{ex:extension_5} vimos que $K(X)$ es una extensión de $K$ de grado infinito, pero esta extensión es finitamente generada, de hecho, es simple.
 
-% Si \(S = \{a_{1},\ldots ,a_{n}\}\), entonces escribimos \(K[S] = K[a_{1},\ldots ,a_{n}]\) y \(K(S) = K(a_{1},\ldots ,a_{n})\). Decimos que \(L / K\) es una extensión finitamente generada si existen \(a_{1},\ldots ,a_{n}\in L\) tales que \(L = K(a_{1},\ldots ,a_{n})\) y que es simple si \(L = K(a)\) para algún \(a\in L\). En este último caso decimos que \(a\) es un elemento primitivo de \(L / K\).
+Por otro lado, el lector podrá comprobar fácilmente que toda extensión finita es finitamente generada. Para ello, solo hay que probar que dada una base $B = \{b_1, \dots, b_n\}$ de $L_K$, entonces $K(b_1, \dots, b_n) = L$.
+\end{remark}
 
-% Cuidado: No confundir extensión finita con extensión finitamente generada. ¿Cuál es la diferencia?
+Recordemos ahora el Ejemplo \ref{ex:extension_4}, en el que vimos que si \(n\in \mathbb{Q}\) no es un cuadrado de un número racional, entonces \(\mathbb{Q}(\sqrt{n})\) es una extensión de \(\mathbb{Q}\) de grado 2. De hecho, notemos que en este caso $\Q[\sqrt{n}] = \Q(\sqrt{n})$, ya que todo elemento de $\Q(\sqrt{n})$ se puede expresar de la forma $a + b \sqrt{n}$ con $a,b \in \Q$.
 
-% \begin{lemma}{Propiedades de las raíces de polinomios irreducibles}{lem_raices_irreducibles}
-% Sea \(L / K\) una extensión. Si \(\alpha \in L\) es una raíz de un polinomio irreducible \(p\) de grado \(n\) en \(K[X]\) entonces
+\begin{proofbox}
+Si consideramos un elemento arbitrario de $\Q(\sqrt{n})$, este es un cociente de polinomios en $\sqrt{n}$, es decir, un elemento de la forma
+\[
+\frac{p(\sqrt{n})}{q(\sqrt{n})},
+\]
+con \(p(X), q(X) \in \Q[X]\) y \(q(\sqrt{n}) \neq 0\). Como \(\sqrt{n}^2 = n\), en realidad podemos suponer que \(p(X)\) y \(q(X)\) son polinomios de grado menor o igual que 1, pues todos los términos $\sqrt{n}^k$ con $k \geq 2$ se pueden reducir a términos de grado 0 o 1. Por tanto, todo elemento de \(\Q(\sqrt{n})\) se puede escribir como
+\[
+\frac{a + b \sqrt{n}}{c + d \sqrt{n}},
+\] con \(a,b,c,d \in \Q\) y \(c + d \sqrt{n} \neq 0\). Si \(d = 0\), entonces \(\frac{a + b \sqrt{n}}{c} = \frac{a}{c} + \frac{b}{c}\sqrt{n}\). Si \(d \neq 0\), multiplicando numerador y denominador por \(c - d \sqrt{n}\) obtenemos
+\[
+\frac{a + b \sqrt{n}}{c + d \sqrt{n}} = \frac{(a + b \sqrt{n})(c - d \sqrt{n})}{c^2 - d^2 n} = \frac{ac - bd n}{c^2 - d^2 n} + \frac{bc - ad}{c^2 - d^2 n} \sqrt{n},
+\]
+que también es de la forma \(a' + b' \sqrt{n}\) con \(a',b' \in \Q\). Por tanto, \(\Q(\sqrt{n}) \subseteq \{a + b \sqrt{n} : a,b \in \Q\}\). La inclusión contraria es inmediata.
+\end{proofbox}
 
-% (1) \(K[\alpha] = K(\alpha)\)
+Notemos que el factor esencial para que funcione la demostración anterior es que \(\sqrt{n}^2 = n \), es decir, $\sqrt{n}$ es una raíz del polinomio irreducible \(X^{2} - n\in \mathbb{Q}[X]\). De hecho, este hecho es general y se recoge en el siguiente lema.
 
-% (2) Si \(q\in K[X]\), entonces \(q(\alpha) = 0\) si y solo si \(p\) divide a \(q\) en \(K[X]\)
+\begin{lemma}{Propiedades de las raíces de polinomios irreducibles}{lem_raices_irreducibles}
+Sea \(L / K\) una extensión. Si \(\alpha \in L\) es una raíz de un polinomio irreducible \(p\) de grado \(n\) en \(K[X]\) entonces
 
-% (3) \(1,\alpha ,\alpha^{2},\ldots ,\alpha^{n - 1}\) es una base de \(K(\alpha)_{K}\). En particular, \([K(\alpha):K] = n\)
-% \end{lemma}
+\begin{enumerate}
+    \item[(1)] \(K[\alpha] = K(\alpha)\)
+    \item[(2)] Si \(q\in K[X]\), entonces \(q(\alpha) = 0\) si y solo si \(p\) divide a \(q\) en \(K[X]\)
+    \item[(3)] \(1,\alpha ,\alpha^{2},\ldots ,\alpha^{n - 1}\) es una base de \(K(\alpha)_{K}\). En particular, \([K(\alpha):K] = n\)
+\end{enumerate}
+\end{lemma}
 
-% \begin{proofbox}
-% (1) y (2) Consideremos el homomorfismo de evaluación en \(\alpha\) \(S = S_{\alpha}:K[X]\to L\), y sea \(I = \ker S = \{q\in K[X]:q(\alpha) = 0\}\). Como obviamente \(I\) es un ideal propio de \(K[X]\) y \(\alpha\) es raíz de \(p\) se tiene \((p)\subseteq I\subset K[X]\). Pero \((p)\) es un ideal maximal de \(K[X]\), pues \(K[X]\) es un DIP. Concluimos que \(I = (p)\) y, del Primer Teorema de Isomorfía deducimos que \(K[\alpha] = \operatorname{Im}S\simeq K[X] / (p)\), que es un cuerpo pues \((p)\) es un ideal maximal de \(K[X]\). Esto implica que \(K[\alpha] = K(\alpha)\) y que para todo \(q\in K[X]\) se verifica \(q(\alpha) = 0\) si y solo si \(p|q\) en \(K[X]\).
+\begin{proofbox}
+    \begin{enumerate}
+    \item[(1)] Consideremos el homomorfismo de evaluación en \(\alpha\) 
+    \[
+    S: K[X]\to L,\quad S(q) = q(\alpha)
+    \]
+    y sea \(I = \ker S = \{q\in K[X]:q(\alpha) = 0\}\).
+    
+    Notemos que \(I\) es un ideal propio de \(K[X]\): \(I \neq (0)\) puesto que $p(\alpha)=0$ y $p$ es irreducible, por tanto distinto de $0$, por otro lado \(I \neq K[X]\) pues \(1 \notin I\) (ya que \(1(\alpha) = 1 \neq 0\)). 
+    
+    Como \(\alpha\) es raíz de \(p\) se tiene \((p)\subseteq I\subset K[X]\). Pero \((p)\) es un ideal maximal de \(K[X]\), pues \(K[X]\) es un DIP y $p$ es irreducible. Concluimos que \(I = (p)\) y, del Primer Teorema de Isomorfía deducimos que \(K[\alpha] = \operatorname{Im}S\simeq K[X] / (p)\), que es un cuerpo pues \((p)\) es un ideal maximal de \(K[X]\). 
+    
+    Finalmente, recordemos que $K[\alpha]$ es el menor subanillo de $L$ que contiene a $K$ y $\{\alpha\}$, y además hemos visto que es un cuerpo. Por otro lado, cualquier cuerpo que contenga a $K$ y $\{\alpha\}$ es, en concreto, un subanillo que contiene a $K$ y $\{\alpha\}$, y por tanto es mayor que $K[\alpha]$, por lo que este debe ser el menor cuerpo que contiene a $K$ y $\{\alpha\}$. Esto prueba que $K[\alpha] = K(\alpha)$.
 
-% (3) Si \(\beta \in K[\alpha]\), entonces \(b = f(\alpha)\) para algún \(f\in K[X]\). Como el grado define una función euclídea en \(K[X]\), existen \(q,r\in K[X]\) tales que \(f = qp + r\) y \(m = \mathrm{gr}(r) < \mathrm{gr}(p) = n\). Entonces \(\beta = f(\alpha) = r(\alpha) = r_{0} + r_{1}\alpha +r_{2}\alpha^{2}\dots +r_{m}\alpha^{m}\). Esto prueba que \(1,\alpha ,\ldots ,\alpha^{n - 1}\) genera \(K(\alpha)_K\). Para demostrar que son linealmente independientes ponemos \(\sum_{i = 0}^{n - 1}a_{i}\alpha^{i} = 0\), con \(k_{i}\in K\). Entonces \(\alpha\) es raíz del polinomio \(a = \sum_{i = 0}^{n - 1}a_{i}X^{i}\), es decir \(a\in KerS = (p)\). Como \(n = \mathrm{gr}(p) > \mathrm{gr}(a)\), deducimos que \(a = 0\), es decir \(a_{i} = 0\) para todo \(i\).
-% \end{proofbox}
+    \item[(2)] Si $q(\alpha) = 0$, entonces \(q\in \ker S = (p)\), luego \(p\) divide a \(q\). La implicación contraria es inmediata.
+
+    \item[(3)] Si \(\beta \in K(\alpha)\), como $K(\alpha)=K[\alpha]$, entonces \(b = f(\alpha)\) para algún \(f\in K[X]\). Como el grado define una función euclídea en \(K[X]\), existen \(q,r\in K[X]\) tales que \(f = qp + r\) y \(m = \mathrm{gr}(r) < \mathrm{gr}(p) = n\). Entonces \(\beta = f(\alpha) = r(\alpha) = r_{0} + r_{1}\alpha +r_{2}\alpha^{2}\dots +r_{m}\alpha^{m}\). Esto prueba que \(1,\alpha ,\ldots ,\alpha^{n - 1}\) genera \(K(\alpha)_K\). Para demostrar que son linealmente independientes ponemos \(\sum_{i = 0}^{n - 1}a_{i}\alpha^{i} = 0\), con \(a_{i}\in K\). Entonces \(\alpha\) es raíz del polinomio \(a = \sum_{i = 0}^{n - 1}a_{i}X^{i}\), es decir \(a\in \ker S = (p)\). Como \(n = \mathrm{gr}(p) > \mathrm{gr}(a)\), deducimos que \(a = 0\), es decir \(a_{i} = 0\) para todo \(i\).
+\end{enumerate}
+\end{proofbox}
 
 % \section{Adjunción de raíces}
 
