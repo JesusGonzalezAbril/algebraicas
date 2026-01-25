@@ -247,7 +247,7 @@ Veamos ahora que \(F\) contiene a \(L_1\) y \(L_2\):
     \item Para \(b \in L_2\), $b = \frac{1_{L_1} b}{1_{L_1}1_{L_2}}$.
 \end{itemize}
 
-Finalmente, veamos que \(F\) es el menor. Sea \(F'\) un subcuerpo de \(L\) que contiene \(L_1\) y \(L_2\). Entonces \(F'\) contiene todas las sumas finitas \(\sum a_i b_i\) con \(a_i \in L_1, b_i \in L_2\), y también sus cocientes. Luego \(F \subseteq F'\). Como \(F\) es cuerpo que contiene \(L_1\) y \(L_2\), es el menor.
+Finalmente, veamos que \(F\) es el menor. Sea \(F'\) un subcuerpo de \(L\) que contiene \(L_1\) y \(L_2\). Entonces \(F'\) contiene todas las sumas finitas \(\sum a_i b_i\) con \(a_i \in L_1, b_i \in L_2\), y también sus cocientes. Luego \(F \subseteq F'\).
 \end{proofbox}
 
 \begin{proposition}{Subanillo y subcuerpo generados}{cuerpo_generado}
@@ -269,28 +269,46 @@ Sean \(L/K\) una extensión de cuerpos y \(S \subseteq L\). Entonces:
     \item[(a)] Denotemos \(R = \{ p(s_1,\dots,s_n) \mid \dots \}\). 
     \begin{itemize}
         \item Claramente \(K \subseteq R\) (polinomios constantes) y \(S \subseteq R\) (polinomios \(X_i\)). 
-        \item \(R\) es cerrado bajo suma y producto: dados dos elementos, juntamos los conjuntos finitos de \(s_i\) usados y los expresamos como polinomios en esas variables. La suma/producto de polinomios es un polinomio. 
-        \item Luego \(R\) es un subanillo que contiene \(K\) y \(S\). 
-        \item Si \(R'\) es otro subanillo con \(K \cup S \subseteq R'\), entonces \(R'\) contiene todos los polinomios en elementos de \(S\), luego \(R \subseteq R'\). 
+        \item \(R\) es cerrado bajo suma y producto: dados dos elementos $x,y$
+        \[
+        x = p(s_1, \dots, s_n), y = q(s'_1, \dots s'_m)
+        \]
+        juntamos los \(s_i, s'_j\) usados y podemos ver $x,y$ como polinomios en $n+m$ variables, donde las variables son $\{s_1, \dots, s_n, s'_1, \dots, s'_m\}$. Como la suma y el producto de polinomios en esas $n+m$ variables da polinomios del mismo tipo, $R$ es cerrado bajo suma y producto.
+        \item $R$ contiene al $1$ de $L$ puesto que este es el mismo $1$ de $K$, que es un polinomio constante.
     \end{itemize}
-    Por tanto, \(R = K[S]\).
+    Luego \(R\) es un subanillo que contiene \(K\) y \(S\). Si \(R'\) es otro subanillo con \(K \cup S \subseteq R'\), entonces \(R'\) contiene todos las sumas y productos de elementos de $S$ y $K$, es decir, todos los polinomios en elementos de \(S\), luego \(R \subseteq R'\), por tanto, \(R = K[S]\).
 
     \item[(b)] Sea \(F = \{ p(s_1,\dots,s_n)/q(s_1,\dots,s_n) \mid \dots \}\). 
     \begin{itemize}
-        \item \(F\) es un subcuerpo: suma, producto e inversos se reducen a operaciones con polinomios. 
-        \item Claramente \(K \cup S \subseteq F\). 
+        \item \(F\) es un subcuerpo: suma, producto e inversos se reducen a operaciones con polinomios en las variables $s_i \in S$, igual que en el apartado anterior. Hacemos solo el caso de los inversos, dado $x \in F \setminus \{0\}$
+        \[
+        x = \frac{p(s_1,\dots,s_n)}{q(s_1,\dots,s_n)},\quad p(s_1,\dots,s_n) \neq 0
+        \]
+        de donde vemos que $ x^{-1} = \frac{q(s_1,\dots,s_n)}{p(s_1,\dots,s_n)} \in F$.
+        \item \(K \cup S \subseteq F\) por el mismo razonamiento del caso anterior tomando como cociente el polinomio constantemente igual a la unidad. 
         \item Si \(F'\) es un subcuerpo con \(K \cup S \subseteq F'\), entonces \(F'\) contiene todos los polinomios \(p(s_1,\dots,s_n)\) y sus cocientes, luego \(F \subseteq F'\). 
     \end{itemize}
     Por tanto, \(F = K(S)\).
 \end{enumerate}
 \end{proofbox}
 
-Analicemos el contenido de la Proposición \ref{prop:cuerpo_generado}. Si \(L / K\) es una extensión y \(S\) es un subconjunto de \(L\), entonces \(K[S]\) denota el menor subanillo de \(L\) que contiene a \(K\) y lo llamamos subanillo de \(L\) generado por \(K\) y \(S\). Por otro lado, el subcuerpo \(K(S)\) se llama extensión de \(K\) generada por \(S\). También diremos que \(K(S)\) es el cuerpo que se obtiene adjuntando a \(K\) los elementos de \(S\).
+Analicemos el contenido de la Proposición \ref{prop:cuerpo_generado}. Si \(L / K\) es una extensión y \(S\) es un subconjunto de \(L\), entonces \(K[S]\) denota el menor subanillo de \(L\) que contiene a \(K\) y lo llamamos subanillo de \(L\) generado por \(K\) y \(S\). Por otro lado, el subcuerpo \(K(S)\) se llama extensión de \(K\) generada por \(S\). También diremos que \(K(S)\) es el cuerpo que se obtiene adjuntando a \(K\) los elementos de \(S\). Notemos que aunque $S$ no tenga ninguna estructura, siempre es posible tomar el producto de elementos de $S$ y elementos de $K$, así como inversos, puesto que todos los elementos con los que se trata se encuentran dentro del cuerpo $L$.
 
 Observando que la intersección de subcuerpos de un cuerpo \(L\) es otro subcuerpo de \(L\), se tiene que \(K(S)\) es la intersección de todos los subcuerpos de \(L\) que contienen a \(K\) y a \(S\). Obsérvese que si \(S_{1}\) y \(S_{2}\) son dos subconjuntos de \(L\) entonces
 \[ 
 K(S_{1})K(S_{2}) = K(S_{1}\cup S_{2}).
 \]
+\begin{proofbox}
+    En primer lugar, $K(S_1)K(S_2)$ es un cuerpo que contiene a $K,S_1,S_2$, por lo que $K(S_{1}\cup S_{2}) \subseteq K(S_{1})K(S_{2})$. 
+    Para la otra inclusión basta notar que cualquier $x \in K(S_1 \cup S_2)$ es de la forma
+    \[
+    x = \frac{p(s_{11}, \dots, s_{1n}, s_{21}, \dots, s_{2m})}{q(s_{11}, \dots, s_{1n}, s_{21}, \dots, s_{2m})}
+    \]
+    con los $s_{1i} \in S_1, s_{2j} \in S_2$, pero podemos ver tanto $p$, $q$ como producto de dos polinomios, uno en las variables $s_{1i}$ y otro en las variables $s_{2j}$, luego
+    \[
+    x = \frac{p_1(s_{11}, \dots, s_{1n})}{q_1(s_{11}, \dots, s_{1n})}\frac{p_2(s_{21}, \dots, s_{2m})}{q_2(s_{21}, \dots, s_{2m})} \in K(S_1)K(S_2).
+    \]
+\end{proofbox}
 
 De la misma forma, si \(L_{1} / K\) y \(L_{2} / K\) son dos subextensiones de \(L\), entonces \(L_{1}L_{2}\) es la intersección de todos los subcuerpos de \(L\) que contienen a \(L_{1}\cup L_{2}\) y por tanto
 \[
