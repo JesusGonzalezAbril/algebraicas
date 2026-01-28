@@ -1,0 +1,61 @@
+\chapter{Polinomios}
+
+Recogemos en este apéndice algunas nociones básicas sobre anillos de polinomios que se utilizan en el texto principal.
+
+\section{Anillos de polinomios}
+
+Sea $A$ un anillo, definimos el anillo de polinomios en una variable $X$ con coeficientes en $A$, denotado por $A[X]$, como el conjunto de todas las expresiones formales de la forma
+\[
+p = p_0 + p_1 X + p_2 X^2 + \cdots + p_n X^n
+\]
+con $n$ un número entero no negativo y $p_i \in A$ para todo $0 \leq i \leq n$. La suma y el producto de dos polinomios $p, q \in A[X]$ se definen de la manera usual. 
+
+El grado de un polinomio $p \in A[X]$, denotado por $\gr(p)$, es el mayor entero $n$ tal que el coeficiente $p_n$ de $X^n$ es no nulo. Si $p = 0$, se define $\mathrm{gr}(p) = -\infty$.
+
+Un polinomio $p \in A[X]$ es mónico si su coeficiente principal (el de mayor grado) es la unidad del anillo $1 \in A$.
+
+\section{Propiedades de anillos de polinomios}
+
+\begin{lemma}{}{anillo_polinomios_dominio}
+Un anillo de polinomios $A[X]$ es un dominio si y sólo si $A$ es un dominio. En ese caso se tiene $A[X]^* = A^*$.
+\end{lemma}
+
+En particular, los polinomios invertibles en un cuerpo $K$ son únicamente los polinomios constantes no nulos. Además, $A[X]$ nunca es un cuerpo, pues el polinomio $X$ no es invertible.
+
+\begin{theorem}{}{puap}
+Sean \(A\) un anillo, \(A[X]\) el anillo de polinomios con coeficientes en \(A\) en la indeterminada \(X\) y \(u : A \to A[X]\) el homomorfismo de inclusión. Para todo homomorfismo de anillos \(f : A \to B\) y todo elemento \(b\) de \(B\) existe un único homomorfismo de anillos \(\overline{f} : A[X] \to B\) tal que \(\overline{f}(X) = b\) y \(\overline{f} \circ u = f\). Para expresar la última igualdad dice que \(\overline{f}\) completa de modo único el diagrama
+    \[
+    \begin{tikzcd}
+    A \arrow{r}{u} \arrow{dr}{f} & A[X] \arrow[dashed]{d}{\overline{f}} \\
+    & B
+    \end{tikzcd}
+    \]
+\end{theorem}
+
+\section{Divisibilidad en anillos de polinomios}
+
+Un polinomio $p \in A[X]$ divide a otro polinomio $q \in A[X]$ si existe un polinomio $r \in A[X]$ tal que $q = p r$. En ese caso se escribe $p \mid q$. 
+
+Se dice que dos polinomios $p, q \in A[X]$ son asociados si existen unidades $u, v \in A[X]^*$ tales que $p = u q$ y $q = v p$.
+
+Un polinomio $p \in A[X]$ es irreducible si no es unidad y sus únicos divisores son las unidades y los polinomios asociados a $p$.
+
+Un polinomio $p \in A[X]$ es primo si siempre que $p$ divide a un producto $q r$ de polinomios $q, r \in A[X]$, entonces $p$ divide a $q$ o a $r$.
+
+\begin{example}{}{}
+El polinomio $X^2 + 1 \in \mathbb{R}[X]$ es irreducible, pues sus únicos divisores son las unidades y los polinomios asociados a $X^2 + 1$. Sin embargo, en $\mathbb{C}[X]$ se factoriza como $(X + i)(X - i)$ y por tanto no es irreducible.
+\end{example}
+
+\begin{proposition}{}{equivalencias_anillos_polinomios}
+Para un anillo $A$, las condiciones siguientes son equivalentes:
+\begin{enumerate}
+\item $A[X]$ es un dominio euclídeo con el grado como función euclídea.
+\item $A[X]$ es un dominio de ideales principales.
+\item $A$ es un cuerpo.
+\end{enumerate}
+
+En este caso, un polinomio $p \in A[X]$ es irreducible si y sólo si es primo.
+\end{proposition}
+
+
+

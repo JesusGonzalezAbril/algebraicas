@@ -557,3 +557,132 @@ Consideremos $K = \mathbb{Q}$ y el polinomio \(p = X^{3} - 2\in \mathbb{Q}[X]\).
 
 Por otro lado, si \(\omega = e^{2\pi i / 3}\) es una raíz primitiva cúbica de la unidad, entonces las otras dos raíces de \(p\) son \(\omega \alpha\) y \(\omega^{2}\alpha\) y las extensiones \(\mathbb{Q}(\omega \alpha) / \mathbb{Q}\) y \(\mathbb{Q}(\omega^{2}\alpha) / \mathbb{Q}\) son isomorfas a \(\mathbb{Q}(\alpha) / \mathbb{Q}\).
 \end{example}
+
+\clearpage
+\section{Extensiones algebraicas}
+
+En un contexto informal hablamos de números trascendentes como aquellos que no son raíces de ningún polinomio con coeficientes enteros (o racionales), por ejemplo \(\pi\) o \(e\). En contraposición, los números algebraicos son aquellos que sí son raíces de algún polinomio con coeficientes enteros (o racionales), por ejemplo \(\sqrt{2}\) o \(\sqrt[3]{5}\). Esta idea se puede generalizar al contexto de extensiones de cuerpos como se recoge en las siguientes definiciones. 
+
+\begin{definition}{Elemento algebraico y trascendente}{algebraico_trascendente}
+Sea \(L / K\) una extensión de cuerpos. Un elemento \(\alpha \in L\) se dice que es algebraico sobre \(K\) si existe un polinomio no nulo \(0\neq p\in K[X]\) tal que \(p(\alpha) = 0\). En caso contrario se dice que \(\alpha\) es trascendente sobre \(K\).
+\end{definition}
+
+\begin{definition}{Extensión algebraica y trascendente}{extension_algebraica_trascendente}
+Decimos que \(L / K\) es una extensión algebraica si todo elemento de \(L\) es algebraico sobre \(K\). En caso contrario decimos que la extensión es trascendente.
+\end{definition}
+
+La siguiente proposición caracteriza cuándo un elemento es algebraico.
+
+\begin{proposition}{Caracterización de elemento algebraico}{prop_caracterizacion_algebraico}
+Si \(L / K\) es una extensión de cuerpos y \(\alpha \in L\), entonces las siguientes condiciones son equivalentes:
+
+\begin{enumerate}
+\item[(1)] \(\alpha\) es algebraico sobre \(K\).
+
+\item[(2)] El homomorfismo de sustitución
+\begin{align*}
+    S_{\alpha}:K[X] &\rightarrow L \\
+    p &\mapsto p(\alpha)
+\end{align*}
+no es inyectivo.
+
+\item[(3)] \(K[\alpha] = K(\alpha)\).
+
+\item[(4)] \(K[\alpha]\) es un subcuerpo de \(L\).
+
+\item[(5)] \(K(\alpha) / K\) es finita.
+\end{enumerate}
+\end{proposition}
+
+\begin{proofbox}
+\begin{itemize}
+\item (1) $\Leftrightarrow$ (2): Si $\alpha$ es algebraico, existe un polinomio no nulo \(f\in K[X]\) tal que \(f(\alpha) = 0\), luego \(f\in \ker S_{\alpha}\) y por tanto \(S_{\alpha}\) no es inyectivo. Recíprocamente, si \(S_{\alpha}\) no es inyectivo, existe un polinomio no nulo \(f\in K[X]\) tal que \(f(\alpha) = 0\), luego \(\alpha\) es algebraico sobre \(K\).
+
+\item (3) $\Leftrightarrow$ (4): Si $K[\alpha] = K(\alpha)$, es inmediato puesto que $K(\alpha)$ es un subcuerpo de $L$. Recíprocamente, si $K[\alpha]$ es un subcuerpo de $L$, entonces $K(\alpha)$, que es el menor subcuerpo de $L$ que contiene a $K$ y $\{\alpha\}$, debe estar contenido en $K[\alpha]$. Por tanto, $K(\alpha) = K[\alpha]$.
+
+\item (1) $\Rightarrow$ (3), (5): Supongamos que \(\alpha\) es algebraico sobre \(K\) y sea \(0\neq f\in K[X]\) tal que \(f(\alpha) = 0\). Si \(f = p_{1}\dots p_{n}\) es una factorización de \(f\) es producto de irreducibles de \(K[X]\), entonces \(p_{1}(\alpha)\dots p_{n}(\alpha) = f(\alpha) = 0\) y por tanto \(p_{i}(\alpha) = 0\) para algún \(i\). Eso implica que \(\alpha\) es una raíz de un polinomio irreducible de \(K[X]\) y del Lema \ref{lem:raices_irreducibles} se deduce que \(K[\alpha] = K(\alpha)\), lo que prueba (3). De este mismo Lema se deduce también que \(K(\alpha) / K\) es finita, lo que prueba (5).
+
+\item (4) $\Rightarrow$ (2): Supongamos que el homomorfismo de sustitución \(S = S_{\alpha}:K[X]\to K[\alpha]\) es inyectivo. Entonces \(K[X]\cong K[\alpha]\) y por tanto \(K[\alpha]\) no es cuerpo. Por tanto no se verifica (4).
+
+\item (5) $\Rightarrow$ (2):  Supongamos que el homomorfismo de sustitución \(S = S_{\alpha}:K[X]\to K[\alpha]\) es inyectivo. Entonces \(K[X]\cong K[\alpha]\) y por tanto \(K[\alpha]\) no es de dimensión finita sobre \(K\). Por tanto no se verifica (5).
+\end{itemize}
+
+\end{proofbox}
+
+Sean \(L / K\) una extensión y \(\alpha\) un elemento de \(L\) algebraico sobre \(K\). Entonces el núcleo \(I\) del homomorfismo de sustitución \(S = S_{\alpha}:K[X]\to L\) es un ideal no nulo que es primo pues \(K[X] / I\simeq \operatorname{Im}(S) = K[\alpha]\) es un dominio. Por tanto \(I = (p)\) para un polinomio irreducible \(p\) de \(K[X]\). De todos los generadores de \(I\), hay uno sólo que sea mónico.
+
+\begin{definition}{}{}
+    Se llama polinomio irreducible o mínimo de \(\alpha\) sobre \(K\), denotado \(\mathrm{Min}_K(\alpha)\), al único generador mónico de \(I = \ker S_{\alpha}\).
+\end{definition}    
+
+Está claro que \(\mathrm{Min}_K(\alpha)\) es el único polinomio mónico de grado mínimo de \(I\). Del Lema \ref{lem:raices_irreducibles} se deduce que si \(\mathrm{Min}_K(\alpha)\) tiene grado \(n\), entonces \(1,\alpha ,\alpha^2,\ldots ,\alpha^{n - 1}\) es una base de \(K(\alpha) / K\). En resumen:
+
+\begin{lemma}{Grado del polinomio mínimo}{lem_grado_minimo}
+Si \(\alpha\) es algebraico sobre \(K\), entonces \([K(\alpha):K] = \mathrm{gr}(\mathrm{Min}_K(\alpha))\) y si este grado es \(n\) entonces \(1,\alpha ,\alpha^2,\ldots ,\alpha^{n - 1}\) es una base de \(K(\alpha)_K\).
+\end{lemma}
+
+\begin{example}{Ejemplos de polinomios mínimos}{ej_minimos}
+(1) \(\mathrm{Min}_{\mathbb{Q}}(\sqrt{2}) = X^2 - 2\), \(\mathrm{Min}_{\mathbb{R}}(\sqrt{2}) = X - \sqrt{2}\) y \(\mathrm{Min}_{\mathbb{Q}}(i) = \mathrm{Min}_{\mathbb{R}}(i) = X^2 +1\). Más generalmente, si \(q\in \mathbb{Q}\) y \(\sqrt{q}\notin \mathbb{Q}\), entonces \(\mathrm{Min}_{\mathbb{Q}}(\sqrt{q}) = X^2 - q\).
+
+(2) Si \(\alpha = \sqrt{5 + \sqrt{5}}\), entonces \(\alpha^2 - 5 = \sqrt{5}\), con lo que \(5 = (\alpha^2 - 5)^2 = \alpha^4 - 10\alpha^2 + 25\), es decir \(\alpha\) es una raíz del polinomio \(X^4 - 10X + 20\). Aplicando el Criterio de Eisenstein a este polinomio para el primo 5, deducimos que es irreducible sobre \(\mathbb{Q}\) y por tanto \(\mathrm{Min}_{\mathbb{Q}}(\alpha) = X^4 - 10X + 20\).
+
+(3) El cuerpo de fracciones de \(K[X]\) es \(K(X)\) y \(K(X) / K\) es una extensión de grado infinito pues las potencias de \(X\) son linealmente independientes sobre \(K\). Por tanto \(X\) es trascendente sobre \(K\).
+
+(4) Decidir si un número real o complejo es algebraico sobre el cuerpo de los números racionales es un problema normalmente muy difícil. El carácter algebraico o trascendente del número \(\pi\) sobre \(\mathbb{Q}\) fue un problema sin resolver durante muchos años hasta que Lindemann demostró en 1882 que es trascendente. También es trascendente la base \(e\) del logaritmo neperiano, lo que fue demostrado por Hermite en 1873.
+\end{example}
+
+Una consecuencia de la Proposición 1.12 es el siguiente corolario que caracteriza las extensiones finitas.
+
+\begin{corollary}{Caracterización de extensiones finitas}{cor_caracterizacion_finitas}
+Las siguientes condiciones son equivalentes para una extensión de cuerpos.
+
+(1) \(L / K\) es finita.
+(2) \(L / K\) es algebraica y finitamente generada.
+(3) Existen \(\alpha_{1},\ldots ,\alpha_{n}\in L\) algebraicos sobre \(K\) tales que \(L = K(\alpha_{1},\ldots ,\alpha_{n})\).
+\end{corollary}
+
+\begin{proofbox}
+(1) implica (2). Supongamos que \(L / K\) es finita. Entonces \([K(\alpha):K]\leq [L:K]< \infty\) para todo \(\alpha \in L\). De la Proposición 1.12 se deduce que \(\alpha\) es algebraico sobre \(K\). Por otro lado, si \(\alpha_{1},\ldots ,\alpha_{n}\) es una base de \(L_{K}\), entonces \(L = K(\alpha_{1},\ldots ,\alpha_{n})\) y por tanto \(L / K\) es finitamente generada.
+
+(2) implica (3) es obvio.
+
+(3) implica (1). Si \(\alpha_{1},\ldots ,\alpha_{n}\) satisfacen las condiciones de (3), entonces cada \(\alpha_{i}\) es algebraico sobre \(K(\alpha_{1},\ldots ,\alpha_{i - 1})\). Por tanto \(K(\alpha_{1},\ldots ,\alpha_{i}) / K(\alpha_{1},\ldots ,\alpha_{i - 1})\) es una extensión finita por el Lema 1.12. Aplicando que la clase de extensiones finitas es multiplicativa deducimos que \(L = K(\alpha_{1},\ldots ,\alpha_{n}) / K\) es finita.
+\end{proofbox}
+
+\begin{corollary}{Multiplicatividad de extensiones algebraicas}{cor_multiplicatividad_algebraicas}
+La clase de extensiones algebraicas es multiplicativa.
+\end{corollary}
+
+\begin{proofbox}
+Sea \(K\subseteq E\subseteq L\) una torre de extensiones. Es obvio que si \(L / K\) es algebraica entonces \(E / K\) y \(L / K\) son algebraicas. Recíprocamente, supongamos que \(E / K\) y \(L / E\) son algebraicas y sea \(\alpha \in L\). Entonces \(\alpha\) es algebraico sobre \(E\). Sea \(p = \mathrm{Min}_{E}(\alpha)\) y sean \(p_0,p_1,\ldots ,p_n\) los coeficientes de \(p\). Por hipótesis \(p_0,p_1,\ldots ,p_n\) que son algebraicos sobre \(K\), lo que implica que \(F = K(p_0,p_1,\ldots ,p_n) / K\) es finita, por el Corolario 1.15. Además, \(\alpha\) es algebraico sobre \(F\) y por tanto \(F(\alpha) / F\) es finita. Entonces \([K(\alpha):K]\leq [K(\alpha ,p_0,p_1,\ldots ,p_n):K] = [F(\alpha):F][F:K]< \infty\). De la Proposición 1.12 deducimos que \(\alpha\) es algebraico sobre \(K\).
+\end{proofbox}
+
+\begin{corollary}{Clausura algebraica}{cor_clausura_algebraica}
+Si \(L / K\) es una extensión de cuerpos, entonces el conjunto \(C\) de los elementos de \(L\) que son algebraicos sobre \(K\) es un subcuerpo de \(L\) que contiene a \(K\), llamado clausura algebraica de \(L / K\), o clausura algebraica de \(K\) en \(L\).
+
+En particular, si \(S\) es un subconjunto de \(L\) formado por elementos algebraicos sobre \(K\), entonces \(K(S)\) es algebraico sobre \(K\).
+\end{corollary}
+
+\begin{proofbox}
+Obviamente \(K\subseteq C\). Si \(\alpha ,\beta \in C\), entonces \(\beta\) es algebraico sobre \(K(\alpha)\) y por tanto \(K(\alpha) / K\) y \(K(\alpha ,\beta) / K(\alpha)\), son algebraicas lo que implica que \(K(\alpha ,\beta) / K\) es también algebraica (Corolario 1.16). Por tanto todo elemento de \(K(\alpha ,\beta)\) es algebraico sobre \(K\) y en particular \(\alpha +\beta ,\alpha - \beta ,\alpha \beta \in C\) y, si \(\beta \neq 0\), entonces \(\beta^{-1}\in C\). Esto prueba que \(C\) es un subcuerpo de \(L\).
+\end{proofbox}
+
+Decimos que una clase \(C\) de extensiones de cuerpos es cerrada para levantamientos si para cada dos extensiones admisibles \(L_{1} / K\) y \(L_{2} / K\) tales que \(L_{1} / K\) esté en \(C\) se verifica que \(L_{1}L_{2} / L_{2}\) también esta en \(C\).
+
+\begin{proposition}{Cierre para levantamientos}{prop_cierre_levantamientos}
+Cada una de las clases de extensiones finitas, algebraicas, finitamente generadas y simples, son cerradas para levantamientos.
+\end{proposition}
+
+\begin{proofbox}
+Sean \(L_{1} / K\) y \(L_{2} / K\) dos extensiones admisibles. Esta claro que si \(L_{1} = K(\alpha_{1},\ldots ,\alpha_{n})\), entonces \(L_{2}L_{1} = L_{2}(L_{1}) = L_{2}(\alpha_{1},\ldots ,\alpha_{n})\), lo que muestra que las clases de extensiones finitamente generadas y de extensiones simples son ambas cerradas para extensiones. Por otro lado si \(L_{1} / K\) es algebraica, entonces todo elemento de \(L_{1}\) es algebraico sobre \(K\) y por tanto también sobre \(L_{2}\), lo que implica que \(L_{1}L_{2} = L_{2}(L_{1})\) es algebraico sobre \(K\), por el Corolario 1.17. Esto prueba que la clase de extensiones algebraicas es cerrada para levantamientos. Como una extensión es finita si y solo si es algebraica y finitamente generada (Proposición 1.12) deducimos que la clase de extensiones finitas también es cerrada para levantamientos.
+\end{proofbox}
+
+Recuérdese que todo endomorfismo de una extensión finita ha de ser un automorfismo (Proposición 1.3). Esta propiedad se verifica de hecho para toda extensión algebraica.
+
+\begin{proposition}{Endomorfismos de extensiones algebraicas}{prop_endomorfismos_algebraicas}
+Si \(L / K\) es una extensión algebraica, entonces todo \(K\)-endomorfismo de \(L\) es un automorfismo.
+\end{proposition}
+
+\begin{proofbox}
+Sea \(\sigma\) un \(K\)-endomorfismo de \(L\). Como todo homomorfismo de cuerpos es inyectivo, solo hay que probar que \(\sigma\) es suprayectivo. Sea \(\alpha \in L\) y sean \(p = \mathrm{Min}_K(\alpha)\), \(\alpha = \alpha_1, \alpha_2, \ldots , \alpha_n\) las raíces de \(p\) en \(L\). Del Lema 1.8 se deduce que \(\sigma\) permuta \(\{\alpha_1, \ldots , \alpha_n\}\) y por tanto \(\alpha = \sigma (\alpha_i)\) para algún \(i\).
+\end{proofbox}
