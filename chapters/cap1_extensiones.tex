@@ -110,7 +110,11 @@ K_3 / K_1 \in \mathcal{C} \iff K_3 / K_2 \in \mathcal{C} \text{ y } K_2 / K_1 \i
 \]
 \end{definition}
 
-Más adelante veremos ejemplos interesantes de torres de cuerpos y clases de extensiones multiplicativas.
+\begin{example}{}{extensiones_multiplicativas}
+Consideremos la torre de cuerpos \(\Q \subseteq \R \subseteq \C\). La extensión \(\C / \Q\) es de grado infinito, y las extensiones \(\R / \Q\) y \(\C / \R\) también lo son. Consideremos la clase de extensiones $\mathcal{C} = \{\R / \Q, \C / \R, \C / \Q\}$, como solo hay una torre $K_1 \subseteq K_2 \subseteq K_3$ con $K_1 = \Q$, $K_2 = \R$, $K_3 = \C$, se cumple trivialmente que la clase $\mathcal{C}$ es multiplicativa.
+\end{example}
+
+Más adelante veremos otros ejemplos interesantes de torres de cuerpos y clases de extensiones multiplicativas.
 
 \begin{definition}{$K$-homomorfismo}{}
 Si \(L_{1}\) y \(L_{2}\) son dos extensiones de \(K\), entonces un homomorfismo de \(L_{1} / K\) en \(L_{2} / K\) (también llamado \(K\)-homomorfismo) es un homomorfismo de cuerpos \(f:L_{1}\to L_{2}\) tal que para todo \(a\in K\), \(f(a) = a\).
@@ -352,7 +356,7 @@ que también es de la forma \(a' + b' \sqrt{n}\) con \(a',b' \in \Q\). Por tanto
 
 Notemos que el factor esencial para que funcione la demostración anterior es que \(\sqrt{n}^2 = n \), es decir, $\sqrt{n}$ es una raíz del polinomio irreducible \(X^{2} - n\in \mathbb{Q}[X]\). De hecho, este hecho es general y se recoge en el siguiente lema.
 
-\begin{lemma}{Propiedades de las raíces de polinomios irreducibles}{lem_raices_irreducibles}
+\begin{lemma}{Propiedades de las raíces de polinomios irreducibles}{raices_irreducibles}
 Sea \(L / K\) una extensión. Si \(\alpha \in L\) es una raíz de un polinomio irreducible \(p\) de grado \(n\) en \(K[X]\) entonces
 
 \begin{enumerate}
@@ -382,75 +386,174 @@ Sea \(L / K\) una extensión. Si \(\alpha \in L\) es una raíz de un polinomio i
 \end{enumerate}
 \end{proofbox}
 
-% \section{Adjunción de raíces}
+\clearpage
+\section{Adjunción de raíces}
 
-% El siguiente teorema muestra que todos los polinomios no constantes tienen alguna raíz en algún cuerpo.
+Una de las maneras más ``sensatas`` de extender los números reales es buscar un cuerpo en el que el polinomio $X^2+1$ tenga raíces, de esta forma llegamos a los números complejos. El siguiente teorema muestra que todos los polinomios no constantes tienen alguna raíz en algún cuerpo.
 
-% \begin{theorem}{Teorema de Kronecker}{thm_kronecker}
-% Si \(K\) es un cuerpo y \(p\in K[X]\setminus K\), entonces existe una extensión \(L\) de \(K\) que contiene una raíz de \(p\).
-% \end{theorem}
+\begin{theorem}{Teorema de Kronecker}{thm_kronecker}
+Si \(K\) es un cuerpo y \(p\in K[X]\setminus K\), entonces existe una extensión \(L\) de \(K\) que contiene una raíz de \(p\).
+\end{theorem}
 
-% \begin{proofbox}
-% Como \(p\) es un elemento no nulo ni invertible de \(K[X]\) y este es un DFU, \(p\) es divisible en \(K[X]\) por un polinomio irreducible y todas las raíces de este divisor son raíces de \(p\). Por tanto podemos suponer que \(p\) es irreducible. Eso implica que \((p)\) es un ideal maximal de \(K[X]\), pues este último es un DIP. Entonces \(L = K[X] / (p)\) es un cuerpo. La composición de la inclusión \(K\to K[X]\) y la proyección \(K[X]\to L = K[X] / (p)\) es un homomorfismo (inyectivo) de cuerpos y por tanto podemos considerar \(L\) como una extensión de \(K\). Para acabar la demostración basta ver que \(a = X + (p)\) es una raíz de \(p\). En efecto, \(p(a) = p(X + (p)) = p + (p) = (p)\), que es el cero del anillo \(L\).
-% \end{proofbox}
+\begin{proofbox}
+Como \(p\) es un elemento no nulo ni invertible de \(K[X]\) y este es un DFU, \(p\) es divisible en \(K[X]\) por un polinomio irreducible y todas las raíces de este divisor son raíces de \(p\). Por tanto podemos suponer que \(p\) es irreducible. Eso implica que \((p)\) es un ideal maximal de \(K[X]\), pues este último es un DIP.
 
-% Por tanto, si \(p\in K[X]\) es un polinomio no constante, entonces existe una extensión \(L / K\) que contiene una raíz \(\alpha\) de \(p\) y \(K(\alpha)\) es la menor subextensión de \(L / K\) que contiene a \(\alpha\).
+Entonces \(L = K[X] / (p)\) es un cuerpo. La composición de la inclusión \(\iota : K\to K[X]\) y la proyección \(\pi: K[X]\to L = K[X] / (p)\) es un homomorfismo de cuerpos, al que llamaremos $f:K \to L$. Para ver que es homomorfismo de cuerpos basta notar que
+\[
+f(1_K) = \pi(1_K[X]) = 1_{K[X]} + (p) = 1_L,
+\]
+\[
+f(a + b) = \pi(a + b) = (a + b) + (p) = (a + (p)) + (b + (p)) = f(a) + f(b),
+\]
+\[
+f(ab) = \pi(ab) = (ab) + (p) = (a + (p))(b + (p)) = f(a)f(b).
+\]
+Por tanto, podemos considerar \(L\) como una extensión de \(K\).
 
-% Decimos que un polinomio \(p\in K[X]\setminus K\) es completamente factorizable sobre \(K\) si es producto de polinomios de grado 1, o lo que es lo mismo si \(p = a(X - \alpha_{1})\dots (X - \alpha_{n})\) para ciertos \(a,\alpha_{1},\ldots ,\alpha_{n}\in K\). En tal caso las raíces de \(p\) son \(\alpha_{1},\ldots ,\alpha_{n}\). Por ejemplo
+Para acabar la demostración basta ver que \(a = X + (p)\) es una raíz de \(p\) (teniendo en cuenta que no vamos a evaluar $p$ en un elemento de $K$ como haríamos usualmente, sino en un elemento de $L$, que es un anillo cociente). En efecto, si ponemos $p = \sum_{i=0}^n a_i X^i$, entonces
+\[
+p(a) = p(X + (p)) = \sum_{i=0}^n a_i (X + (p))^i = p + (p) = (p)
+\]
+que es el cero del anillo \(L\).
+\end{proofbox}
 
-% \[ X^{3} - 1 = (X - 1)(X^{2} + X + 1) = (X - 1)\left(X - \frac{-1 + \sqrt{-3}}{2}\right)\left(X - \frac{-1 - \sqrt{-3}}{2}\right) \]
+Por tanto, si \(p\in K[X]\) es un polinomio no constante, entonces existe una extensión \(L / K\) que contiene una raíz \(\alpha\) de \(p\) y \(K(\alpha)\) es la menor subextensión de \(L / K\) que contiene a \(\alpha\).
 
-% es completamente factorizable sobre \(\mathbb{C}\), pero no sobre \(\mathbb{Q}\) ni \(\mathbb{R}\). El Teorema de Kronecker afirma que cada polinomio no constante tiene una raíz en alguna extensión. De hecho podemos decir algo más.
+\begin{definition}{Polinomio completamente factorizable y raíces}{def_polinomio_completamente_factorizable}
+Decimos que un polinomio \(p\in K[X]\setminus K\) es completamente factorizable sobre \(K\) si es producto de polinomios de grado 1, o lo que es lo mismo si \(p = a(X - \alpha_{1})\dots (X - \alpha_{n})\) para ciertos \(a,\alpha_{1},\ldots ,\alpha_{n}\in K\). En tal caso las raíces de \(p\) son \(\alpha_{1},\ldots ,\alpha_{n}\).
+\end{definition}
 
-% \begin{corollary}{Factorización completa en alguna extensión}{cor_factorizacion}
-% Si \(K\) es un cuerpo y \(p\in K[X]\setminus K\), entonces \(p\) es completamente factorizable en alguna extensión de \(K\).
-% \end{corollary}
+\begin{example}{}{}
+Un polinomio puede ser completamente factorizable sobre un cuerpo pero no sobre otro. Por ejemplo,
+\[
+X^{3} - 1 = (X - 1)(X^{2} + X + 1) = (X - 1)\left(X - \frac{-1 + \sqrt{-3}}{2}\right)\left(X - \frac{-1 - \sqrt{-3}}{2}\right)
+\]
+es completamente factorizable sobre \(\mathbb{C}\), pero no sobre \(\mathbb{Q}\) ni \(\mathbb{R}\).
+\end{example}
 
-% \begin{proofbox}
-% Por inducción sobre el grado de \(p\). Si el grado de \(p\) es 1, no hay nada que demostrar. Si el grado de \(p\) es mayor que 1 entonces \(p\) tiene una raíz \(\alpha\) en alguna extensión \(E\) de \(K\). Entonces \(p = (X - \alpha)q\) para algún \(q\in E[X]\setminus E\). Por hipótesis de inducción \(q\) es completamente factorizable en alguna extensión \(L\) de \(E\), es decir \(q\) es producto de polinomios de \(L[X]\) de grado menor o igual que 1. Por tanto, también \(p\) es producto de polinomios de \(L[X]\) de grado menor o igual que 2.
-% \end{proofbox}
+El Teorema de Kronecker afirma que cada polinomio no constante tiene una raíz en alguna extensión. De hecho podemos decir algo más.
 
-% Nuestro objetivo principal es establecer un criterio de cuándo un polinomio es resoluble por radicales que es precisamente cuando sus raíces se puedan expresar en sucesivas extensiones en las que en cada paso se adjunta una raíz \(n\)-ésima de elementos del cuerpo anterior. Para formalizar esto introducimos las siguientes definiciones:
+\begin{corollary}{Factorización completa en alguna extensión}{cor_factorizacion}
+Si \(K\) es un cuerpo y \(p\in K[X]\setminus K\), entonces \(p\) es completamente factorizable en alguna extensión de \(K\).
+\end{corollary}
 
-% \begin{definition}{Torre radical y extensión radical}{def_torre_radical}
-% Una torre radical es una torre de cuerpos
+\begin{proofbox}
+Lo demostraremos por inducción sobre el grado de \(p\). Si el grado de \(p\) es 1, no hay nada que demostrar.
 
-% \[ E_0\subseteq E_1\subseteq \dots \subseteq E_n \]
+Supongamos que el resultado se cumple para polinomios de grado $n-1$. Si el grado de \(p\) es $n$ entonces \(p\) tiene una raíz \(\alpha\) en alguna extensión \(E\) de \(K\). Entonces \(p = (X - \alpha)q\) para algún \(q\in E[X]\setminus E\). Por hipótesis de inducción, \(q\) es completamente factorizable en alguna extensión \(L\) de \(E\), es decir, \(q\) es producto de polinomios de \(L[X]\) de grado menor o igual que 1. Por tanto, también \(p\) es producto de polinomios de \(L[X]\) de grado menor o igual que 1.
+\end{proofbox}
 
-% tales que para cada \(i = 1,\ldots ,n\), existen \(n_i\geq 1\) y \(\alpha_{i}\in E_{i}\) tal que \(E_{i} = E_{i - 1}(\alpha_{i})\) y \(\alpha^{n_i}\in E_{i - 1}\).
+Nuestro objetivo principal es establecer un criterio para determinar cuándo un polinomio es resoluble por radicales. Como se detalla en las siguientes definiciones, un polinomio es resoluble por radicales precisamente cuando sus raíces se pueden expresar en sucesivas extensiones en las que en cada paso se adjunta una raíz \(n\)-ésima de elementos del cuerpo anterior.
 
-% Una extensión de cuerpos \(L / K\) se dice que es radical si existe una torre radical
+\begin{definition}{Torre radical y extensión radical}{torre_radical}
+Una torre radical es una torre de cuerpos
+\[
+E_0\subseteq E_1\subseteq \dots \subseteq E_n
+\]
+tales que para cada \(i = 1,\ldots ,n\), existen \(n_i\geq 1\) y \(\alpha_{i}\in E_{i}\) tal que \(E_{i} = E_{i - 1}(\alpha_{i})\) y \(\alpha_i^{n_i}\in E_{i - 1}\).
 
-% \[ K = E_0\subseteq E_1\subseteq \dots \subseteq E_n = L. \]
+Una extensión de cuerpos \(L / K\) se dice que es radical si existe una torre radical
+\[
+K = E_0\subseteq E_1\subseteq \dots \subseteq E_n = L.
+\]
+\end{definition}
 
-% Una ecuación polinómica \(P(X) = 0\), con \(P\in K[X]\), se dice que es resoluble por radicales sobre \(K\) si existe una extensión radical \(L / K\) tal que \(P\) es completamente factorizable en \(L\). En tal caso también se dice que el polinomio \(P\) es resoluble por radicales sobre \(K\).
-% \end{definition}
+\begin{definition}{Ecuación resoluble por radicales}{resoluble_radicales}
+Una ecuación polinómica \(P(X) = 0\), con \(P\in K[X]\), se dice que es resoluble por radicales sobre \(K\) si existe una extensión radical \(L / K\) tal que \(P\) es completamente factorizable en \(L\). En tal caso también se dice que el polinomio \(P\) es resoluble por radicales sobre \(K\).
+\end{definition}
 
-% O sea si suponemos que \(P\in K[X]\) entonces \(P\) es resoluble por radicales sobre \(K\) si \(K\) tiene una extensión radical que contiene todas las raíces de \(P\) y queremos descubrir cuándo pasa eso. Para llegar a ello tenemos que recorrer un largo camino que se completará en los dos últimos capítulos.
+O sea, si suponemos que \(P\in K[X]\) entonces \(P\) es resoluble por radicales sobre \(K\) si \(K\) tiene una extensión radical que contiene todas las raíces de \(P\) y queremos descubrir cuándo pasa eso. Para llegar a ello tenemos que recorrer un largo camino que se completará en los dos últimos capítulos.
 
-% Recordemos que si \(\sigma :K\to E\) es un homomorfismo de anillos, entonces \(\sigma\) tiene una única extensión a un homomorfismo entre los anillos de polinomios, que seguiremos denotando por \(\sigma :K[X]\to E[X]\) tal que \(\sigma (X) = X\). Este homomorfismo se comporta bien sobre las raíces.
+Recordemos que si \(\sigma :K\to E\) es un homomorfismo de anillos, entonces \(\sigma\) tiene una única extensión a un homomorfismo entre los anillos de polinomios, que seguiremos denotando por \(\sigma :K[X]\to E[X]\) tal que \(\sigma (X) = X\). Este homomorfismo se comporta bien sobre las raíces, como recoge el siguiente lema.
 
-% \begin{lemma}{Comportamiento de homomorfismos con raíces}{lem_hom_raices}
-% Sean \(\sigma :E\to L\) un homomorfismo de cuerpos y \(p\in E[X]\). Si \(\alpha\) es una raíz de \(p\) en \(E\) entonces \(\sigma (\alpha)\) es una raíz de \(\sigma (p)\).
+\begin{lemma}{Comportamiento de homomorfismos con raíces}{hom_raices}
+Sean \(\sigma :E\to L\) un homomorfismo de cuerpos y \(p\in E[X]\).
+\begin{enumerate}
+    \item Si \(\alpha\) es una raíz de \(p\) en \(E\) entonces \(\sigma (\alpha)\) es una raíz de \(\sigma (p)\).
 
-% Si \(E / K\) y \(L / K\) son extensiones de un cuerpo \(K\), \(p\in K[X]\) y \(\sigma\) es un \(K\)-homomorfismo entonces \(\sigma\) se restringe a una aplicación inyectiva del conjunto de las raíces de \(p\) en \(E\) al conjunto de las raíces de \(p\) en \(L\).
+    \item Si \(E / K\) y \(L / K\) son extensiones de un cuerpo \(K\), \(p\in K[X]\) y \(\sigma: E \to L\) es un \(K\)-homomorfismo entonces \(\sigma\) se restringe a una aplicación inyectiva del conjunto de las raíces de \(p\) en \(E\) al conjunto de las raíces de \(p\) en \(L\).
 
-% En particular, si \(E = L\) (es decir, si \(\sigma \in \operatorname{Gal}(L / K)\)), entonces esta restricción de \(\sigma\) es una permutación del conjunto de las raíces de \(p\) en \(L\).
-% \end{lemma}
+    \item En particular, si \(E = L\) (es decir, si \(\sigma \in \operatorname{Gal}(L / K)\)), entonces esta restricción de \(\sigma\) es una permutación del conjunto de las raíces de \(p\) en \(L\).
+\end{enumerate}
+\end{lemma}
 
-% \begin{proofbox}
-% Si \(p = p_0 + p_1X + \dots +p_nX^n\), entonces
+\begin{proofbox}
+\begin{enumerate}
+\item[1.] Supongamos que \(p = p_0 + p_1X + \dots +p_nX^n\), entonces $\sigma (p) = \sigma (p_0) + \sigma (p_1)X + \dots + \sigma (p_n)X^n$. Si \(\alpha\) es una raíz de \(p\), entonces
+\begin{align*}
+\sigma (p)(\sigma (\alpha)) &= (\sigma (p_0) + \sigma (p_1)X + \sigma (p_1)X^2 +\dots +\sigma (p_n)X^n)(\sigma (\alpha)) \\
+&= \sigma (p_0) + \sigma (p_1)\sigma (\alpha) + \sigma (p_1)\sigma (\alpha)^2 +\dots +\sigma (p_n)\sigma (\alpha)^n \\
+&= \sigma (p_0 + p_1\alpha +p_1\alpha^2 +\dots +p_n\alpha^n) \\
+&= \sigma (p(\alpha)) = \sigma (0) = 0.
+\end{align*}
+Esto prueba la primera afirmación.
+\item[2.] Sean $R_E, R_L$ los conjuntos de raíces de $p$ en $E$ y $L$ respectivamente. Si $\alpha \in R_E$, entonces por la primera parte $\sigma (\alpha) \in R_L$, luego $\sigma$ restringido a $R_E$ es una aplicación de $R_E$ en $R_L$. Para la inyectividad, basta notar que $R_E \subseteq E, R_L \subseteq L$ y que $\sigma$ es inyectiva como homomorfismo de $E$ a $L$ por ser un homomorfismo de cuerpos.
+\item[3.] Si \(E = L\), entonces la aplicación de la parte 2 es una aplicación de \(R_L\) en sí mismo. Como \(\sigma\) es inyectiva, esta aplicación también lo es, y como \(R_L\) es un conjunto finito (de tamaño a lo sumo \(\gr p\)), la aplicación es sobreyectiva, luego es una permutación de \(R_L\).
+\end{enumerate}
+\end{proofbox}
 
-% \[ \sigma (p)(\sigma (\alpha)) = (\sigma (p_0) + \sigma (p_1)X + \sigma (p_1)X^2 +\dots +\sigma (p_n)X^n)(\sigma (\alpha)) \]
-% \[ = \sigma (p_0) + \sigma (p_1)\sigma (\alpha) + \sigma (p_1)\sigma (\alpha)^2 +\dots +\sigma (p_n)\sigma (\alpha)^n \]
-% \[ = \sigma (p_0 + p_1\alpha +p_1\alpha^2 +\dots +p_n\alpha^n) \]
-% \[ = \sigma (p(\alpha)) = \sigma (0) = 0. \]
+\begin{lemma}{Lema de Extensión}{extension}
+Sea \(\sigma :K_1\to K_2\) un homomorfismo de cuerpos y sea \(p\in K_1[X]\) un polinomio irreducible. Sean \(L_1 / K_1\) y \(L_2 / K_2\) dos extensiones de cuerpos y sean \(\alpha_1\in L_1\) y \(\alpha_2\in L_2\) con \(\alpha_1\) una raíz de \(p\).
 
-% Esto prueba la primera afirmación. Las otras dos afirmaciones son consecuencias inmediatas de la primera.
-% \end{proofbox}
+Entonces existe un homomorfismo \(\hat{\sigma}:K_1(\alpha_1)\to K_2(\alpha_2)\) tal que \(\hat{\sigma}|_{K_1} = \sigma\) y \(\hat{\sigma} (\alpha_1) = \alpha_2\) si y solo si \(\alpha_2\) es una raíz del polinomio \(\sigma (p)\). En tal caso sólo hay un homomorfismo \(\hat{\sigma}\) que satisfaga la condición indicada y si además, \(\sigma\) es un isomorfismo, entonces también \(\hat{\sigma}\) es un isomorfismo.
 
-% \begin{lemma}{Lema de Extensión}{lem_extension}
-% Sea \(\sigma :K_1\to K_2\) un homomorfismo de cuerpos y sea \(p\in K_1[X]\) un polinomio irreducible. Sean \(L_1 / K_1\) y \(L_2 / K_2\) dos extensiones de cuerpos y sean \(\alpha_1\in L_1\) y \(\alpha_2\in L_2\) con \(\alpha_1\) una raíz de \(p\).
+    \begin{center}
+    \begin{tikzcd}[column sep=30pt, row sep=large]
+    K_1 \arrow{r}{\sigma} \arrow[hook]{d} & K_2 \arrow[hook]{d} \\
+    K_1(\alpha_1) \arrow[dashed]{r}{\hat{\sigma}} & K_2(\alpha_2)
+    \end{tikzcd}
+    \end{center}
 
-% Entonces existe un homomorfismo \(\tilde{\sigma}:K_1(\alpha_1)\to K_2(\alpha_2)\) tal que \(\tilde{\sigma}|_{K_1} = \sigma\) y \(\tilde{\sigma} (\alpha_1) = \alpha_2\) si y solo si \(\alpha_2\) es una raíz del polinomio \(\sigma (p)\). En tal caso sólo hay un homomorfismo \(\tilde{\sigma}\) que satisfaga la condición indicada y si además, \(\sigma\) es un isomorfismo, entonces también \(\tilde{\sigma}\) es un isomorfismo.
-% \end{lemma}
+\end{lemma}
+
+\begin{proofbox}
+Si existe el homomorfismo \(\hat{\sigma}\) satisfaciendo la propiedad indicada entonces del Lema \ref{lem:hom_raices} se tiene que \(\alpha_{2} = \hat{\sigma} (\alpha_{1})\) es una raíz de \(\hat{\sigma} (p) = \sigma (p)\).
+
+Recíprocamente, supongamos que \(\alpha_{2}\) es una raíz de \(\sigma (p)\). Consideremos los homomorfismos de sustitución en \(\alpha_{1}\) y \(\alpha_{2}\): \(S_{\alpha_{1}}:K_{1}[X]\to K_{1}(\alpha_{1})\) y \(S_{\alpha_{2}}:K_{2}[X]\to K_{2}(\alpha_{2})\). Por el Lema \ref{lem:raices_irreducibles}, \(K_{1}[\alpha_{1}] = K_{1}(\alpha_{1})\), \([K(\alpha_{1}):K] = \mathrm{gr}(p)\) y \((p) = \ker S_{\alpha_{1}}\). Además, por el Lema \ref{lem:hom_raices}, \(\sigma (p)\in \ker S_{\alpha_{2}}\).
+
+Todo esto implica que la aplicación \(\hat{\sigma}:K_{1}(\alpha_{1})\to K_{2}(\alpha_{2})\), dada por \(\hat{\sigma} (f(\alpha_{1})) = \sigma (f)(\alpha_{2})\), para \(f\in K_{1}[X]\), está bien definida pues si \(f(\alpha_{1}) = g(\alpha_{1})\), con \(f,g\in K_{1}[X]\), entonces \(f - g\in \ker S_{\alpha_{1}}\), con lo que \(p\) divide a \(f - g\) en \(K_{1}[X]\) ya que $\ker S_{\alpha_{1}} = (p)$. Esto quiere decir que existen \(q\in K_{1}[X]\) tal que \(f - g = qp\). Aplicando \(\sigma\) obtenemos
+\[
+\sigma (f) - \sigma (g) = \sigma (q)\sigma (p).
+\]
+Luego \(\sigma (p)\) divide a \(\sigma (f) - \sigma (g)\) en \(K_{2}[X]\) y por tanto \(\sigma (f) - \sigma (g)\in \ker S_{\alpha_{2}}\), es decir \(\sigma (f)(\alpha_{2}) = \sigma (g)(\alpha_{2})\). Una vez que hemos visto que \(\hat{\sigma}\) está bien definida, es fácil ver que es un homomorfismo de cuerpos (queda como ejercicio) y que satisface las condiciones del Lema, si $k \in K_1$ entonces $k = f(\alpha_1)$ con $f(X) = k$, luego $\sigma(f) = \sigma(k)$ y
+\[
+\hat{\sigma}(k) = \hat{\sigma}(f(\alpha_1)) = \sigma(f)(\alpha_{2}) = \sigma(k),
+\]
+por otro lado, para $\alpha_1$ tenemos $\alpha_1 = g(\alpha_1)$ con $g(X) = X$, luego $\sigma(g)(X) = X$ y
+\[
+\hat{\sigma}(\alpha_1) = \hat{\sigma}(g(\alpha_1)) = \sigma(g)(\alpha_{2}) = \alpha_{2}.
+\]
+
+Para la unicidad supongamos que \(\tau :K_{1}(\alpha_{1})\to K_{2}(\alpha_{2})\) es un homomorfismo que cumple las condiciones, es decir \(\tau |_{K} = \sigma\) y \(\tau (\alpha_{1}) = \alpha_{2}\). Si \(f = f_{0} + f_{1}X + \dots +f_{n}X^{n}\), entonces
+\[
+\tau (f(\alpha_{1})) = \tau (f_{0} + f_{1}\alpha_{1} + \dots +f_{n}\alpha_{1}^{n}) = \tau (f_{0}) + \tau (f_{1})\tau (\alpha_{1}) + \dots +\tau (f_{n})\tau (\alpha_{1})^{n}
+\]
+\[
+= \sigma (f_{0}) + \sigma (f_{1})\alpha_{2} + \dots +\sigma (f_{n})\alpha_{2}^{n} = \hat{\sigma} (f)(\alpha_{2}).
+\]
+Por tanto \(\tau = \hat{\sigma}\).
+
+Si además \(\sigma\) es un isomorfismo, entonces \(\hat{\sigma}\) es un isomorfismo pues todo homomorfismo de cuerpos es inyectivo y además \(K_{2}\) y \(\alpha_{2}\) están en la imagen de \(\hat{\sigma}\),\footnote{$K_2$ está en la imagen de $\hat{\sigma}$ ya que $\hat{\sigma}(k) = \sigma(k)$ para todo $k \in K_1$ y $\sigma$ es un isomorfismo, en concreto suprayectivo} lo que muestra que \(\hat{\sigma}\) es suprayectivo.
+\end{proofbox}
+
+Si aplicamos el Lema \ref{lem:extension} al caso en que \(\sigma\) es la aplicación identidad en \(K\) entonces obtenemos que si \(\alpha\) y \(\beta\) son dos raíces de \(p\) entonces \(K(\alpha)\) y \(K(\beta)\) son \(K\)-isomorfos. Eso y algo más es lo que dice la siguiente proposición.
+
+\begin{proposition}{Extensiones por raíces del mismo polinomio irreducible}{isomorfismo_raices_irreducible}
+Sea \(p\in K[X]\) un polinomio irreducible y sean \(\alpha\) y \(\beta\) dos raíces de \(p\) en dos extensiones de \(K\) (tal vez dos extensiones diferentes). Entonces existe un único \(K\)-isomorfismo \(f:K(\alpha)\to K(\beta)\) tal que \(f(\alpha) = \beta\). En particular las dos extensiones \(K(\alpha) / K\) y \(K(\beta) / K\) son isomorfas.
+\end{proposition}
+
+\begin{proofbox}
+Aplicando el Lema \ref{lem:extension} con \(\sigma = \mathrm{id}_K\) (que es un isomorfismo) y $p$ el polinomio irreducible obtenemos la existencia y unicidad del \(K\)-isomorfismo \(f:K(\alpha)\to K(\beta)\) tal que \(f(\alpha) = \beta\).
+\end{proofbox}
+
+\begin{remark}
+La hipótesis de que el polinomio \(p\) sea irreducible en la Proposición \ref{prop:isomorfismo_raices_irreducible} es imprescindible. Por ejemplo, si \(p = X(X^{2} + 1)\), entonces \(0\) e \(i\) son dos raíces de \(p\) y obviamente \(\mathbb{Q}(0) = \mathbb{Q}\) no es isomorfo a \(\mathbb{Q}(i)\).
+\end{remark}
+
+A la vista de la Proposición \ref{prop:isomorfismo_raices_irreducible}, si \(p\in K[X]\) es irreducible, hablaremos de la extensión de \(K\) obtenida adjuntando a \(K\) una raíz del polinomio irreducible \(p\), como la extensión \(K(\alpha) / K\) donde \(\alpha\) es cualquier raíz de \(p\) en una extensión arbitraria de \(K\).
+
+\begin{example}{}{}
+Consideremos $K = \mathbb{Q}$ y el polinomio \(p = X^{3} - 2\in \mathbb{Q}[X]\). Este polinomio es irreducible en \(\mathbb{Q}[X]\) por el Criterio de Eisenstein con \(p = 2\). Si \(\alpha = \sqrt[3]{2}\) es una raíz real de \(p\), entonces la extensión \(\mathbb{Q}(\alpha) / \mathbb{Q}\) es la extensión obtenida al adjuntar a \(\mathbb{Q}\) una raíz del polinomio irreducible \(X^{3} - 2\).
+
+Por otro lado, si \(\omega = e^{2\pi i / 3}\) es una raíz primitiva cúbica de la unidad, entonces las otras dos raíces de \(p\) son \(\omega \alpha\) y \(\omega^{2}\alpha\) y las extensiones \(\mathbb{Q}(\omega \alpha) / \mathbb{Q}\) y \(\mathbb{Q}(\omega^{2}\alpha) / \mathbb{Q}\) son isomorfas a \(\mathbb{Q}(\alpha) / \mathbb{Q}\).
+\end{example}
