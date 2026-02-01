@@ -4,15 +4,21 @@ Recogemos en este apéndice algunas nociones básicas sobre anillos de polinomio
 
 \section{Anillos de polinomios}
 
+\begin{definition}{}{}
 Sea $A$ un anillo, definimos el anillo de polinomios en una variable $X$ con coeficientes en $A$, denotado por $A[X]$, como el conjunto de todas las expresiones formales de la forma
 \[
 p = p_0 + p_1 X + p_2 X^2 + \cdots + p_n X^n
 \]
 con $n$ un número entero no negativo y $p_i \in A$ para todo $0 \leq i \leq n$. La suma y el producto de dos polinomios $p, q \in A[X]$ se definen de la manera usual. 
+\end{definition}
 
+\begin{definition}{}{}
 El grado de un polinomio $p \in A[X]$, denotado por $\gr(p)$, es el mayor entero $n$ tal que el coeficiente $p_n$ de $X^n$ es no nulo. Si $p = 0$, se define $\mathrm{gr}(p) = -\infty$.
+\end{definition}
 
+\begin{definition}{}{}
 Un polinomio $p \in A[X]$ es mónico si su coeficiente principal (el de mayor grado) es la unidad del anillo $1 \in A$.
+\end{definition}
 
 \section{Propiedades de anillos de polinomios}
 
@@ -34,16 +40,28 @@ Sean \(A\) un anillo, \(A[X]\) el anillo de polinomios con coeficientes en \(A\)
 
 \section{Divisibilidad en anillos de polinomios}
 
-Un polinomio $p \in A[X]$ divide a otro polinomio $q \in A[X]$ si existe un polinomio $r \in A[X]$ tal que $q = p r$. En ese caso se escribe $p \mid q$. 
+Por simplicidad, consideraremos a partir de ahora un cuerpo $K$ y su anillo de polinomios $K[X]$.
 
-Se dice que dos polinomios $p, q \in A[X]$ son asociados si existen unidades $u, v \in A[X]^*$ tales que $p = u q$ y $q = v p$.
+\begin{definition}{}{}
+Un polinomio $p \in K[X]$ divide a otro polinomio $q \in K[X]$ si existe un polinomio $r \in K[X]$ tal que $q = p r$. En ese caso se escribe $p \mid q$. 
+\end{definition}
 
-Un polinomio $p \in A[X]$ es irreducible si no es unidad y sus únicos divisores son las unidades y los polinomios asociados a $p$.
+\begin{definition}{}{}
+Se dice que dos polinomios $p, q \in K[X]$ son asociados si existen unidades $u, v \in K[X]^* = K^*$ tales que $p = u q$ y $q = v p$.
+\end{definition}
 
-Un polinomio $p \in A[X]$ es primo si siempre que $p$ divide a un producto $q r$ de polinomios $q, r \in A[X]$, entonces $p$ divide a $q$ o a $r$.
+\begin{definition}{}{}
+Un polinomio $p \in K[X]$ es irreducible si no es constante y sus únicos divisores son los elementos de $K^*$ y los polinomios asociados a $p$.
+\end{definition}
+
+\begin{definition}{}{}
+Un polinomio $p \in K[X]$ es primo si siempre que $p$ divide a un producto $q r$ de polinomios $q, r \in K[X]$, entonces $p$ divide a $q$ o a $r$.
+\end{definition}
 
 \begin{example}{}{}
-El polinomio $X^2 + 1 \in \mathbb{R}[X]$ es irreducible, pues sus únicos divisores son las unidades y los polinomios asociados a $X^2 + 1$. Sin embargo, en $\mathbb{C}[X]$ se factoriza como $(X + i)(X - i)$ y por tanto no es irreducible.
+El polinomio $p = X^2 + 1 \in \mathbb{R}[X]$ es irreducible, pues sus únicos divisores son las unidades y los polinomios asociados a $X^2 + 1$. Notemos que si $\alpha \in \R\setminus\{0\}$ entonces $\alpha (X^2 + 1)$ divide a $X^2 + 1$, ya que ambos polinomios son asociados. Sin embargo, es fácil ver que podemos escoger un único polinomio de entre todos los asociados a $X^2 + 1$ que sea mónico, que es precisamente $X^2 + 1$.
+
+Por el contrario, en $\mathbb{C}[X]$, $p$ se factoriza como $(X + i)(X - i)$ y por tanto no es irreducible.
 \end{example}
 
 \begin{proposition}{}{equivalencias_anillos_polinomios}
@@ -57,5 +75,55 @@ Para un anillo $A$, las condiciones siguientes son equivalentes:
 En este caso, un polinomio $p \in A[X]$ es irreducible si y sólo si es primo.
 \end{proposition}
 
+En el caso que nos ocupa, vemos que para un cuerpo \(K\), el anillo de polinomios \(K[X]\) es un dominio euclídeo, y por tanto un dominio de ideales principales. Además, en \(K[X]\) los polinomios irreducibles son exactamente los primos.
+
+\section{Polinomios sobre $\Q$}
+
+En esta sección estudiamos los anillos de polinomios con coeficientes en los números enteros y racionales, \(\Z[x]\) y \(\Q[X]\).
+
+\begin{definition}{}{}
+Dado un polinomio \(p \in \Z[X]\), se define su contenido, denotado por \(c(p)\), como el máximo común divisor de sus coeficientes.
+\end{definition}
+
+\begin{remark}
+El contenido de un polinomio \(p \in \Z[X]\) está bien definido salvo por signo, pero normalmente lo tomaremos como positivo.
+\end{remark}
+
+Notemos también que siempre se puede transformar un polinomio \(p \in \Q[X]\) en un polinomio \(p' \in \Z[X]\) multiplicando por el mínimo común múltiplo de los denominadores de sus coeficientes.
+
+\begin{definition}{}{}
+Un polinomio \(p \in \Z[X]\) se dice que es primitivo si su contenido es $1$ (es decir, el máximo común divisor de sus coeficientes es \(1\)).
+\end{definition}
+
+\begin{remark}
+Cuando hablamos de un polinomio \(p \in \Q[X]\) primitivo nos referimos a que los coeficientes de \(p\) son enteros y que \(p\) es primitivo como polinomio en \(\Z[X]\).
+\end{remark}
 
 
+\begin{lemma}{Gauss}{gauss}
+Sea \(p \in \Z[X]\) un polinomio. Entonces \(p\) es irreducible en \(\Q[X]\) si y sólo si \(p\) es primitivo e irreducible en \(\Z[X]\).
+\end{lemma}
+
+En concreto, si un polinomio \(p \in \Z[X]\) es mónico, entonces es primitivo (como el coeficiente principal es 1, el contenido es 1), y por tanto \(p\) es irreducible en \(\Q[X]\) si y sólo si es irreducible en \(\Z[X]\).
+
+\begin{example}{}{}
+    Consideremos el polinomio \(p(X) = 5X^4 + 3X^3 + 6X + 2\). El contenido de \(p\) es \(1\), luego \(p\) es primitivo. Si \(p\) fuera reducible en \(\Z[X]\), entonces existirían polinomios \(q, r \in \Z[X]\) tales que \(p = q r\). Observando los grados, las únicas posibilidades son que \(q\) y \(r\) tengan grados \(1\) y \(3\) o ambos grado \(2\). En cualquier caso, al comparar los coeficientes se llega a una contradicción, luego \(p\) es irreducible en \(\Z[X]\) y por tanto en \(\Q[X]\).
+\end{example}
+
+\begin{theorem}{Criterio de Eisenstein}{eisenstein}
+Sea 
+\[
+p(X) = a_n X^n + a_{n-1} X^{n-1} + \cdots + a_1 X + a_0 \in \Z[X]
+\]
+un polinomio. Si existe un número primo \(p\) tal que
+\begin{enumerate}
+\item \(p\) divide a \(a_i\) para todo \(0 \leq i \leq n-1\),
+\item \(p\) no divide a \(a_n\),
+\item \(p^2\) no divide a \(a_0\),
+\end{enumerate}
+entonces \(p(X)\) es irreducible en \(\Q[X]\).
+\end{theorem}
+
+\begin{example}{}{}
+    Consideremos el polinomio \(p(X) = 3X^4 + 15X^2 + 10\). Aplicando el criterio de Eisenstein con el primo \(p = 5\) vemos que \(p\) divide a \(15\) y a \(10\), pero no a \(3\), y además \(5^2 = 25\) no divide a \(10\). Por tanto, \(p(X)\) es irreducible en \(\Q[X]\).
+\end{example}
