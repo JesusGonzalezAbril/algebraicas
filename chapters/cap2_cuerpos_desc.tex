@@ -1,0 +1,318 @@
+\chapter{Cuerpos algebraicamente cerrados y extensiones normales}
+
+\section{Cuerpos algebraicamente cerrados}
+
+Una propiedad muy importante que distingue a los números complejos de los números reales es que todo polinomio no constante con coeficientes complejos tiene al menos una raíz compleja. Partiendo de esta observación, cabe preguntarse si existen otros cuerpos que compartan esta propiedad. La respuesta es afirmativa y nos lleva a la siguiente definición. Pero antes, veamos que, como consecuencia del Teorema de Kronecker, hay varias condiciones equivalentes al hecho de que todo polinomio no constante tenga una raíz en el cuerpo.
+
+\begin{proposition}{Caracterización de cuerpos algebraicamente cerrados}{caracterizacion_cerrados}
+Las siguientes condiciones son equivalentes para un cuerpo \(K\):
+
+\begin{enumerate}
+\item[(1)] Todo polinomio no constante de \(K[X]\) tiene una raíz en \(K\).
+
+\item[(2)] Los polinomios irreducibles de \(K[X]\) son precisamente los de grado 1.
+
+\item[(3)] Todo polinomio no constante de \(K[X]\) es completamente factorizable sobre \(K\).
+
+\item[(4)] \(K\) contiene un subcuerpo \(K_0\) tal que \(K/K_0\) es algebraica y todo polinomio de \(K_0[X]\) es completamente factorizable sobre \(K\).
+
+\item[(5)] Si \(L/K\) es una extensión algebraica, entonces \(L = K\).
+
+\item[(6)] Si \(L/K\) es una extensión finita, entonces \(L = K\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proofbox}
+(1) $\Rightarrow$ (2). Supongamos que $p$ es un polinomio irreducible de $K[X]$ de grado $n \geq 1$. Por hipótesis, $p$ tiene una raíz $\alpha$ en $K$. Entonces $X - \alpha$ divide a $p$ y como $p$ es irreducible, se tiene que $p = a(X - \alpha)$ para algún $a \in K^*$.
+
+(2) $\Rightarrow$ (3). Sea $p \in K[X]$ un polinomio no constante de grado $n \geq 1$. Razonaremos por inducción, si $n = 1$ entonces $p$ ya está completamente factorizado. Suponiendolo cierto para $n$, si $p$ tiene grado $n+1$, por hipótesis $p$ tiene una raíz $\alpha$ en $K$. Entonces $X - \alpha$ divide a $p$ y podemos escribir $p(X) = (X - \alpha)q(X)$ con $q \in K[X]$ de grado $n$. Por hipótesis de inducción, $q$ es completamente factorizable sobre $K$ y por tanto lo es también $p$.
+
+(3) $\Rightarrow$ (4). Basta tomar \(K_0 = K\), que es algebraica puesto que cada elemento $\alpha$ de $K$ es algebraico sobre $K$ (anula al polinomio de grado 1 $X-\alpha \in K[X]$).
+
+(4) $\Rightarrow$ (5). Supongamos que \(K\) contiene un subcuerpo \(K_0\) satisfaciendo la propiedad (4). Si \(L/K\) es una extensión algebraica, como $K/K_0$ también es algebraica, entonces \(L/K_0\) es también algebraica, ya que las extensiones algebraicas son multiplicativas (Corolario \ref{cor:multiplicatividad_algebraicas}). Si \(\alpha \in L\), entonces por hipótesis \(p = \Min_{K_0}(\alpha)\) es completamente factorizable sobre \(K\), con lo cual todas las raíces de \(p\) pertenecen a \(K\). En particular \(\alpha \in K\) y esto prueba que \(L = K\).
+
+(5) $\Rightarrow$ (6). Si $L/K$ es una extensión finita, por el Corolario \ref{cor:caracterizacion_finitas}, $L/K$ es algebraica y por tanto $L = K$ por hipótesis.
+
+(6) $\Rightarrow$ (1). Sea $p \in K[X]$ un polinomio no constante. Por el \hyperref[thm:kronecker]{Teorema de Kronecker}, existe una extensión $L$ de \(K\) que contiene una raíz $\alpha$ de \(p\), y de hecho $K(\alpha)$ es la menor extensión que contiene a esta raíz. Pero como $\alpha$ es raíz de $p$, por tanto un elemento algebraico, la extensión $K(\alpha)/K$ debe ser finita (Proposición \ref{prop:caracterizacion_algebraico}). Entonces, por hipótesis, \(L = K\) y por tanto \(\alpha \in K\), es decir, \(p\) tiene una raíz en \(K\).
+\end{proofbox}
+
+\begin{definition}{Cuerpo algebraicamente cerrado}{}
+Se dice que un cuerpo \(K\) es algebraicamente cerrado cuando verifica las condiciones equivalentes de la Proposición \ref{prop:caracterizacion_cerrados}.
+\end{definition}
+
+\begin{example}{Cuerpos no algebraicamente cerrados}{}
+Es fácil encontrar ejemplos de cuerpos que no son algebraicamente cerrados. Por ejemplo, \(\mathbb{Q}\) y \(\mathbb{R}\) no lo son porque el polinomio \(X^2 + 1\) no tiene raíces reales y \(\mathbb{Z}_2\) tampoco lo es porque \(X^2 + X + 1\) no tiene raíces en \(\mathbb{Z}_2\).
+\end{example}
+
+\begin{example}{}{}
+Si \(p \geq 3\) es un entero primo entonces \(\mathbb{Z}_p\) no es algebraicamente cerrado, pues \(X^{p-1} + 1\) no tiene raíces en \(\mathbb{Z}_p\) por el Teorema Pequeño de Fermat.
+\end{example}
+
+\begin{proofbox}
+Recordemos el Teorema Pequeño de Fermat: si \(p\) es un número primo y \(a\) es un entero no divisible por \(p\), entonces \(a^{p-1} \equiv 1 \mod p\).
+
+En particular, si \(\alpha \in \mathbb{Z}_p\) entonces \(\alpha^{p-1} = 1\) en \(\mathbb{Z}_p\). Por tanto, si \(\alpha\) es una raíz de \(X^{p-1} + 1\) en \(\mathbb{Z}_p\), entonces \(\alpha^{p-1} = -1 = p - 1\) en \(\mathbb{Z}_p\), y por Teorema Pequeño de Fermat debe ser $p-1 = 1 \implies p = 2$, una contradicción.
+\end{proofbox}
+
+\begin{example}{}{}
+Más generalmente, ningún cuerpo finito es algebraicamente cerrado.
+\end{example}
+
+\begin{proofbox}
+Supongamos $K$ es un cuerpo finito y algebraicamente cerrado. Como $K$ es finito, tendrá un número finito de elementos, digamos $n$, sea pues
+\[
+K = \{a_1, a_2, \ldots, a_n\}
+\]
+Entonces, el polinomio
+\[
+p(X) = (X - a_1)(X - a_2)\cdots(X - a_n) + 1
+\]
+es no constante (de hecho es de grado $n$) y no tiene raíces en $K$, ya que para cada $a_i \in K$ se tiene que $p(a_i) = 1$. Esto contradice la hipótesis de que $K$ es algebraicamente cerrado.
+\end{proofbox}
+
+\begin{remark}
+En el ejemplo anterior el polinomio $p(X)$ solo toma el valor $1$ al evaluarlo, pero no es constante puesto que el término general (el de mayor grado) es $X^n$, distinto de cero.
+\end{remark}
+
+
+Un caso particularmente importante de cuerpo algebraicamente cerrado es el de los números complejos. Veamos la demostración del Teorema Fundamental del Álgebra (se demuestra usando análisis, por supuesto):
+
+\begin{theorem}{Teorema Fundamental del Álgebra}{thm_fundamental_algebra}
+\(\mathbb{C}\) es algebraicamente cerrado.
+\end{theorem}
+
+\begin{proofbox}
+Se trata de ver que, dado un polinomio
+\[
+p(X) = a_0 + a_1X + a_2X^2 + \cdots + a_nX^n
+\]
+de grado \(n \geq 1\) (\(a_n \neq 0\)) con coeficientes complejos (\(a_i \in \mathbb{C}\) para cada \(i = 0, 1, \ldots, n\)), existe un número complejo \(z\) tal que \(p(z) = 0\).
+
+Usaremos propiedades elementales de los números complejos, como las desigualdades entre módulos
+\[
+|z_1| - |z_2| \leq |z_1 + z_2| \leq |z_1| + |z_2|
+\]
+o el hecho de que todos ellos tienen raíces \(m\)-ésimas para cualquier entero \(m \geq 1\). Para demostrar esto, dado un número complejo $z$ cualquiera, podemos expresar $z = |z|e^{i \theta}$, aplicando el Teorema de Bolzano al polinomio \(X^m - |z|\) en el intervalo \([0, |z| + 1]\) se demuestra que el número real $|z|$ tiene una raíz \(m\)-ésima, a partir de esta raíz $\sqrt[m]{|z|}$ podemos construir las raíces \(m\)-ésimas de $z$:
+\[
+\sqrt[m]{|z|} e^{i(\theta + 2k\pi)/m}, \quad k = 0, 1, \ldots, m-1.
+\]
+
+También emplearemos los conceptos de límite y continuidad. En particular, el hecho de que toda función continua \(\mathbb{C} \to \mathbb{R}\), y en concreto
+\[
+z \mapsto |p(z)| = +\sqrt{p(z)\overline{p(z)}},
+\]
+alcanza su mínimo en cualquier subconjunto cerrado y acotado de \(\mathbb{C}\), y por tanto en cualquier bola \(\{z \in \mathbb{C} : |z| \leq r\}\), donde \(r\) es un número real positivo (Teorema de Weierstrass).
+
+El esquema de la demostración es el siguiente
+\begin{enumerate}
+    \item Demostrar \(z \mapsto |p(z)|\) alcanza su mínimo absoluto en \(\mathbb{C}\); para ello, se demuestra que \(|p(z)|\) “se hace grande” fuera de cierta bola \(\{z \in \mathbb{C} : |z| \leq r\}\), y entonces el mínimo que alcanza \(|p(z)|\) en esa bola es de hecho un mínimo absoluto en \(\mathbb{C}\).
+    \item Ver que ese mínimo es 0, esto lo hacemos por reducción al absurdo: si el mínimo no es 0, construimos una función \(\mathbb{C} \to \mathbb{R}\) cuyo mínimo absoluto vale 1, y sin embargo encontramos un punto en el que la misma función vale menos de 1.
+\end{enumerate}
+
+Veamos, por inducción en el grado \(n\), que \(|p(z)|\) se hace más grande que cualquier número real positivo fuera de cierta bola. Sea $k > 0$ un número real cualquiera.
+
+Si \(n = 1\) entonces \(p(X) = a_0 + a_1X\) con \(a_1 \neq 0\) y basta tomar \(r = (k + |a_0|)/|a_1|\) para que cuando \(|z| > r\)
+\[
+|p(z)| \geq |a_1| |z| - |a_0| > |a_1| \frac{k + |a_0|}{|a_1|} - |a_0| = k.
+\]
+
+Si $n > 1$ entonces la expresión de \(p(X)\) se reescribe como
+\[
+p(X) = a_0 + Xq(X), \quad \text{donde} \quad q(X) = a_1 + a_2X + \cdots + a_nX^{n-1},
+\]
+y aplicando la hipótesis de inducción al polinomio \(q\) obtenemos un radio $r$ a partir del cual \(|q(z)|\) se hace más grande que $k + |a_0|$, por lo que si $|z| > \max\{s, 1\}$ entonces
+\[
+|p(z)| = |zq(z) + a_0| \geq |z| |q(z)| - |a_0| > |z|(k + |a_0|) - |a_0| > (k + |a_0|) - |a_0| = k.
+\]
+
+Para el segundo paso, como la función \(|p(z)|\) es continua, alcanza un mínimo en la bola \(B = \{z \in \mathbb{C} : |z| \leq r\}\); es decir, existe \(z_0 \in B\) tal que \(|p(z_0)| \leq |p(z)|\) para cada \(z \in B\). La misma desigualdad se tiene cuando \(z \notin B\), pues entonces \(|z| > r\) y así \(|p(z)| > |a_0| = |p(0)| \geq |p(z_0)|\). En consecuencia, \(|p(z)|\) alcanza un mínimo absoluto en \(z_0\); es decir, \(|p(z_0)| \leq |p(z)|\) para cada \(z \in \mathbb{C}\).
+
+Es claro que \(p(X)\) tiene una raíz si y solo si la tiene \(p(X + z_0)\), y éste tiene la ventaja de que su módulo alcanza un mínimo absoluto en el 0. Por tanto, sustituyendo \(p(X)\) por \(p(X + z_0)\), podemos suponer que \(z_0 = 0\), y por tanto que \(|p(z)| \geq |p(0)| = |a_0|\) para cada \(z \in \mathbb{C}\). Si \(a_0 = 0\) hemos terminado, así que se trata de ver que la condición \(a_0 \neq 0\) nos lleva a una contradicción.
+
+En este caso, dividir \(p\) por \(a_0\) no va a cambiar el punto en el que se alcanza el mínimo, por lo que podemos suponer que \(a_0 = 1\). Excluyendo monomios con coeficiente nulo, podemos escribir
+\[
+p(X) = 1 + a_m X^m + a_{m+1} X^{m+1} + \cdots + a_n X^n \qquad (\text{con } a_m \neq 0)
+\]
+para cierto entero \(m\) con \(1 \leq m \leq n\). Sea ahora \(\omega\) una raíz \(m\)-ésima de \(-a_m^{-1}\) (es decir, \(\omega \in \mathbb{C}\) verifica \(\omega^m = -a_m^{-1}\)). Entonces \(p(\omega X) = 1 - X^m + (\text{términos de grado mayor que } m)\); es decir,
+\[
+p(\omega X) = 1 - X^m + X^m h(X),
+\]
+donde \(h(X)\) es cierto polinomio con \(h(0) = 0\).
+
+Finalmente, vamos a encontrar un número real \(t\) tal que \(|p(\omega t)| < 1\), lo que nos dará la contradicción buscada puesto que 1 es el mínimo absoluto de \(|p(z)|\). Consideremos la función \(\mathbb{R} \to \mathbb{R}\) dada por \(t \mapsto |h(t)|\). Considerando su límite en \(x = 0\) (que vale 0 por continuidad) encontramos un número \(t\) en el intervalo \((0, 1)\) tal que \(|h(t)| < 1\) (haciendo \(\epsilon = 1\) en la formulación usual del límite). Entonces también \(t^m\) y \(1 - t^m\) están en el intervalo \((0, 1)\), por lo que
+\[
+|p(\omega t)| \leq |1 - t^m| + |t^m h(t)| < 1 - t^m + t^m \cdot 1 = 1,
+\]  
+como queríamos ver.
+\end{proofbox}
+
+\begin{remark}
+Animamos al lector a consultar la demostración del Teorema Fundamental del Álgebra usando el Teorema de Liouville en análisis complejo, que es más sencilla que la aquí mostrada (a costa de emplear un resultado muy potente).
+\end{remark}
+
+\clearpage
+\section{Clausura algebraica}
+
+Por el Teorema Fundamental del Álgebra, \(\mathbb{C}\) es un cuerpo que contiene las raíces de todos los polinomios no constantes de \(K[X]\) para cualquier subcuerpo \(K\) de \(\mathbb{C}\). Por otro lado el Corolario \ref{cor:factorizacion} muestra que para un cuerpo arbitrario \(K\) y un polinomio cualquiera \(p\) de \(K[X]\), se puede encontrar una extensión \(L\) de \(K\) en la que el polinomio \(p\) factoriza completamente, es decir, en lo que atañe al polinomio \(p\), \(L\) se comporta como si fuera algebraicamente cerrado, aunque para que lo fuera todos los polinomios con coeficientes en \(L\) tendrían que ser completamente factorizables sobre \(L\), lo que no tiene por qué ser cierto.
+
+En vista de esto es natural preguntarse si todo cuerpo \(K\) tiene una extensión algebraicamente cerrada. Por otro lado tenemos la siguiente proposición, que va a garantizar que si \(K\) es subcuerpo de un cuerpo algebraicamente cerrado entonces también va a poderse incluir en un cuerpo que además de ser algebraicamente cerrado es algebraico sobre \(K\).
+
+\begin{proposition}{Clausura algebraica en un cuerpo algebraicamente cerrado}{clausura_en_cerrado}
+Sea \(L/K\) una extensión con \(L\) algebraicamente cerrado y sea \(C\) la clausura algebraica de \(K\) en \(L\). Entonces \(C/K\) es algebraica y \(C\) es algebraicamente cerrado.
+\end{proposition}
+
+\begin{proofbox}
+Que \(C/K\) es algebraica es consecuencia de la definición de clausura algebraica de \(K\) en \(L\). Por otro lado, si \(p \in C[X]\), entonces \(p\) tiene una raíz \(\alpha\) en \(L\) puesto que es algebraicamente cerrado. Eso implica que \(C(\alpha)/C\) es finita y, por tanto, algebraica. Como la clase de extensiones algebraicas es multiplicativa, se tiene que \(C(\alpha)/K\) es algebraica, lo que implica que \(\alpha \in C\). Esto prueba que \(C\) es algebraicamente cerrado.
+\end{proofbox}
+
+\begin{definition}{Clausura algebraica de un cuerpo}{clausura_algebraica}
+Una clausura algebraica de un cuerpo \(K\) es una extensión algebraica \(L\) de \(K\) formada por un cuerpo algebraicamente cerrado.
+\end{definition}
+
+Obsérvese la diferencia entre una clausura algebraica de un cuerpo \(K\) y la clausura algebraica de una extensión \(L/K\). La primera es una extensión de \(K\) que ha de ser algebraica sobre \(K\) y algebraicamente cerrada y la segunda es el mayor subcuerpo de \(L\) que es algebraico sobre \(K\), pero no tiene que ser algebraicamente cerrado, a no ser que \(L\) sea algebraicamente cerrado (Proposición \ref{prop:clausura_en_cerrado}).
+
+\begin{theorem}{Existencia de clausura algebraica}{thm_existencia_clausura}
+Todo cuerpo tiene una clausura algebraica.
+\end{theorem}
+
+\begin{proofbox}
+Por la Proposición \ref{prop:clausura_en_cerrado}, basta demostrar que todo cuerpo está contenido en un cuerpo algebraicamente cerrado. En primer lugar vamos a ver que si \(K\) es un cuerpo, entonces existe otro cuerpo \(E\) tal que todo polinomio no constante de \(K[X]\) tiene una raíz en \(E\). Para eso tenemos que considerar anillos con infinitas indeterminadas.
+
+Si \(A\) es un anillo y \(S\) es un conjunto de símbolos, entonces se define el anillo de polinomios en \(S\) con coeficientes en \(A\) como la unión
+\[
+A[S] = \bigcup_{T \in \mathcal{F}} A[T]
+\]
+donde \(\mathcal{F}\) es el conjunto de todos los subconjuntos finitos de \(S\) y para cada \(T \in \mathcal{F}\), \(A[T]\) es el anillo de polinomios con coeficientes en \(A\), con indeterminadas los elementos de \(T\). Si \(T_1, T_2 \in \mathcal{F}\), entonces \(A[T_1]\) y \(A[T_2]\) son dos subanillos de \(A[T_1 \cup T_2]\). Por tanto cada subconjunto finito de \(A[S]\) está dentro de \(A[T]\) para algún \(T \in \mathcal{F}\), lo que nos permite sumar y multiplicar elementos de \(A[S]\) simplemente sumándolos o multiplicándolos en el anillo en un número finito de indeterminadas que los contenga.
+
+Para construir el cuerpo \(E\) que contiene raíces de todos los polinomios no constantes de \(K[X]\) razonamos de la siguiente forma. A cada polinomio no constante \(p \in K[X]\) le asociamos un símbolo \(X_p\) y construimos el anillo \(K[S]\) donde \(S = \{X_p : p \in K[X] \setminus K\}\). Sea \(I\) el ideal de \(K[S]\) generado por todos los elementos de la forma \(p(X_p)\).
+
+Vamos a empezar mostrando que \(I\) es un ideal propio de \(K[S]\). En caso contrario, $1 \in I$, por lo que existirían \(g_1, \ldots, g_n \in K[S]\) y \(p_1, \ldots, p_n \in K[X] \setminus K\) tales que \(g_1p_1(X_{p_1}) + \cdots + g_np_n(X_{p_n}) = 1\). Para simplificar la notación vamos a poner \(X_i\) en lugar de \(X_{p_i}\), con lo que tenemos
+\begin{equation}
+g_1p_1(X_1) + \cdots + g_np_n(X_n) = 1.
+\label{eq:ideal_propio}
+\end{equation}
+
+Aplicando el Teorema de Kronecker repetidamente deducimos que existe una extensión \(F\) de \(K\) en la que cada uno de los polinomios \(p_1, \ldots, p_n\) tiene una raíz \(\alpha_i\). Sustituyendo \(X_i\) por \(\alpha_i\) en la ecuación \eqref{eq:ideal_propio} obtenemos \(0 = 1\), una contradicción.
+
+Una vez que sabemos que \(I\) es un ideal propio de \(K[S]\) deducimos que \(I\) está contenido en un ideal maximal \(M\) de \(K[S]\). Entonces \(E = K(S)/M\) es un cuerpo y la composición de la inclusión \(K \to K(S)\) con la proyección \(K(S) \to K(S)/M\) proporciona un homomorfismo de cuerpos, con lo que podemos considerar \(E\) como una extensión de \(K\). Ahora observamos que \(p(X_p + M) = p(X_p) + M = 0\), pues \(p(X_p) \in M\), con lo que \(X_p + M\) es una raíz de \(p\) en \(E\) para todo \(p \in K[X] \setminus K\).
+
+Utilizando que para cada cuerpo \(K\) existe una extensión \(E\) de \(K\) que contiene raíces de todos los polinomios no nulos de \(K[X]\) construimos de forma recursiva una sucesión de extensiones
+\[
+K = E_1 \subseteq E_2 \subseteq E_3 \dots
+\]
+tal que todo polinomio no constante de \(E_i[X]\) tiene una raíz en \(E_{i+1}\). Entonces \(E = \bigcup_{i\geq 1} E_i\) tiene una estructura de cuerpo en el que la suma y el producto de cada dos elementos se calcula en un \(E_i\) que contiene a ambos. Si \(f\) es un polinomio no constante de \(E[X]\), entonces \(f \in E_i[X]\) para algún \(i\) y por tanto \(f\) tiene una raíz en \(E_{i+1}\) que, por supuesto, pertenece a \(E\). Esto prueba que \(E\) es algebraicamente cerrado.
+\end{proofbox}
+
+\begin{theorem}{Extensión de homomorfismos a extensiones algebraicas}{extension_homomorfismo}
+Si \(\sigma : K \to L\) es un homomorfismo de cuerpos con \(L\) algebraicamente cerrado y \(F/K\) una extensión algebraica, entonces existe otro homomorfismo de cuerpos \(F \to L\) que extiende \(\sigma\).
+\end{theorem}
+
+\begin{proofbox}
+Sea
+\[
+\Omega = \left\{ (E, \tau) : \begin{array}{l} E/K \text{ es una subextensión de } F/K \text{ y} \\ \tau : E \to L \text{ es un homomorfismo que extiende } \sigma \end{array} \right\}
+\]
+y consideremos el siguiente orden en \(\Omega\):
+\[
+(E_1, \tau_1) \leq (E_2, \tau_2) \iff E_1 \subseteq E_2 \text{ y } \tau_2|_{E_1} = \tau_1.
+\]
+
+Es fácil ver que \((\Omega, \leq)\) es un conjunto ordenado inductivo y, por el Lema de Zorn, tiene un elemento maximal \((E, \tau)\).
+
+Basta con demostrar que \(F \subseteq E\). Sean \(\alpha \in F\) y \(p = \mathrm{Min}_E(\alpha)\). Como \(L\) es algebraicamente cerrado, el polinomio \(\tau(p)\) tiene una raíz \(\beta\) en \(L\). Del Lema \ref{lem:extension} deducimos que existe un homomorfismo \(\tau' : E(\alpha) \to L\) que extiende \(\tau\) y tal que \(\tau'(\alpha) = \beta\). Entonces \((E(\alpha), \tau') \in \Omega\) y \((E, \tau) \leq (E(\alpha), \tau')\). De la maximalidad de \((E, \tau)\) deducimos que \(E = E(\alpha)\), es decir \(\alpha \in E\). Esto prueba que \(F \subseteq E\).
+\end{proofbox}
+
+El siguiente corolario del Teorema \ref{thm:extension_homomorfismo} muestra que la clausura algebraica de un cuerpo es única salvo isomorfismos, por lo que a partir de ahora utilizaremos el artículo definido para hablar de \textit{la} clausura algebraica de un cuerpo.
+
+\begin{corollary}{Unicidad de la clausura algebraica}{unicidad_clausura}
+Si \(\sigma : K_1 \to K_2\) es un isomorfismo de cuerpos y \(L_1\) y \(L_2\) son clausuras algebraicas de \(K_1\) y \(K_2\), respectivamente, entonces existe un isomorfismo \(L_1 \to L_2\) que extiende \(\sigma\).
+\end{corollary}
+
+\begin{proofbox}
+Por el Teorema \ref{thm:extension_homomorfismo} hay un homomorfismo \(\tilde{\sigma} : L_1 \to L_2\) que extiende \(\sigma\). Como \(L_1\) es algebraicamente cerrado y \(\tilde{\sigma}\) induce un isomorfismo entre \(L_1\) y \(\tilde{\sigma}(L_1)\), este último también es algebraicamente cerrado. Como \(L_2/K_2\) es algebraica, \(L_2/\tilde{\sigma}(L_1)\) es algebraica y por tanto \(L_2 = \tilde{\sigma}(L_1)\), lo que muestra que \(\tilde{\sigma}\) es un isomorfismo.
+\end{proofbox}
+
+% \clearpage
+% \section{Cuerpos de descomposición y extensiones normales}
+
+% \begin{definition}{Cuerpo de descomposición}{def_cuerpo_descomposicion}
+% Sean \(K\) un cuerpo y \(P\) un conjunto de polinomios no constantes de \(K[X]\). Se llama \textit{cuerpo de descomposición} de \(P\) sobre \(K\) a un cuerpo de la forma \(K(S)\) donde \(S\) es el conjunto de las raíces de los elementos de \(P\) en una clausura algebraica de \(K\).
+% \end{definition}
+
+% Para cada clausura algebraica \(L\) de \(K\) hay un cuerpo de descomposición de \(P\) sobre \(K\) dentro de \(L\) pero la unicidad de la clausura algebraica salvo isomorfismos va a implicar la unicidad del cuerpo de descomposición de una familia de polinomios sobre \(K\). Eso es lo que dice la siguiente proposición.
+
+% \begin{proposition}{Unicidad del cuerpo de descomposición}{prop_unicidad_descomposicion}
+% Sea \(\sigma : K_1 \to K_2\) un isomorfismo de cuerpos y sean \(P_1\) un conjunto de polinomios no constantes de \(K_1[X]\) y \(P_2 = \{\sigma(p) : p \in P\}\). Si \(L_1\) es un cuerpo de descomposición de \(P\) sobre \(K_1\) y \(L_2\) es un cuerpo de descomposición de \(P_2\) sobre \(K_2\), entonces existe un isomorfismo \(\tilde{\sigma} : L_1 \to L_2\) que extiende \(\sigma\).
+% \end{proposition}
+
+% \begin{proofbox}
+% Para cada \(i = 1, 2\) sean \(\overline{K}_i\) una clausura algebraica de \(K_i\) y \(S_i\) el conjunto formado por las raíces de los elementos de \(P_i\) en \(\overline{K}_i\). Del Corolario 2.7 se tiene que existe un isomorfismo \(\tilde{\sigma} : \overline{K}_1 \to \overline{K}_2\), que extiende \(\sigma\). Si \(\alpha \in S_1\), entonces existe \(p \in P_1\) tal que \(\alpha\) es raíz de \(p\). Del Lema 1.8 se deduce que \(\tilde{\sigma}(\alpha)\) es una raíz de \(\tilde{\sigma}(p)\). Esto prueba que \(\tilde{\sigma}(S_1) \subseteq S_2\) y el mismo argumento muestra que \(\tilde{\sigma}^{-1}(S_2) \subseteq S_1\), de donde deducimos que \(\tilde{\sigma}(S_1) = S_2\) y por tanto \(\tilde{\sigma}(K(S_1)) = K(S_2)\), con lo que la restricción de \(\tilde{\sigma}\) a \(K(S_1) \to K(S_2)\) es el isomorfismo buscado.
+% \end{proofbox}
+
+% \begin{example}{Ejemplos de cuerpos de descomposición}{ej_descomposicion}
+% (1) El cuerpo de descomposición de \(X^2 - 2\) sobre \(\mathbb{Q}\) es \(\mathbb{Q}(\sqrt{2})\) y el de \(X^2 + 1\) es \(\mathbb{Q}(i)\). Más generalmente, si \(q \in \mathbb{Q}\), entonces el cuerpo de descomposición de \(X^2 - q\) es \(\mathbb{Q}(\sqrt{q})\).
+
+% (2) El cuerpo de descomposición de \(X^3 - 1 = (X - 1)(X^2 + X + 1)\) sobre \(\mathbb{Q}\), coincide con el de \(X^2 + X + 1\) que es \(\mathbb{Q}\left(\frac{-1+\sqrt{-3}}{2}\right) = \mathbb{Q}(\sqrt{-3})\). Pongamos \(\omega = \frac{-1+\sqrt{-3}}{2}\). Entonces \(\omega^2 = \frac{-1-\sqrt{-3}}{2}\) y \(\omega^3 = 1\), lo que muestra que \(1, \omega\) y \(\omega^2\) son las tres raíces del polinomio \(X^3 - 1\), es decir las tres raíces terceras de la unidad. Obsérvese que si \(\alpha^3 = a\), entonces \((\alpha\omega)^3 = (\alpha\omega^2)^3 = a\), con lo que las tres raíces de \(X^3 - a\) son \(\alpha, \alpha\omega\) y \(\alpha\omega^2\). Por ejemplo, el cuerpo de descomposición de \(X^3 - 2\) sobre \(\mathbb{Q}\) es \(\mathbb{Q}(\sqrt[3]{2}, \omega\sqrt[3]{2}, \omega^2\sqrt[3]{2}) = \mathbb{Q}(\sqrt[3]{2}, \omega)\).
+
+% (3) Más generalmente, si \(n\) es un entero positivo, entonces las raíces complejas del polinomio \(X^n - 1\) se llaman raíces \(n\)-ésimas de la unidad y son los números complejos de la forma
+
+% \[
+% \zeta_n^k = e^{\frac{2\pi ik}{n}} \qquad (k = 0, 1, \dots, n-1),
+% \]
+
+% donde \(\zeta_n = e^{2\pi i/n}\). Están situadas en los vértices de un polígono regular de \(n\) lados inscrito en una circunferencia de radio 1. Como las raíces de \(X^n - 1\) son las potencias de \(\zeta_n\), el cuerpo de descomposición de \(X^n - 1\) sobre \(\mathbb{Q}\) es \(\mathbb{Q}(\zeta_n)\).
+
+% Si \(a\) es un número complejo diferente de 0, entonces las raíces complejas del polinomio \(X^n - a\) se obtienen multiplicando una de ellas, digamos \(\alpha\), por las \(n\) raíces \(n\)-ésimas de la unidad. Por tanto el cuerpo de descomposición de \(X^n - a\) es \(\mathbb{Q}(\alpha, \zeta_n)\) donde \(\alpha\) es una raíz \(n\)-ésima arbitraria de \(a\).
+% \end{example}
+
+% Una extensión de cuerpos \(L/K\) se dice que es \textit{normal} si satisface cualquiera de las condiciones equivalentes del siguiente teorema:
+
+% \begin{theorem}{Caracterización de extensiones normales}{thm_caracterizacion_normales}
+% Las siguientes condiciones son equivalentes para una extensión \(L/K\):
+
+% (1) \(L\) es un cuerpo de descomposición sobre \(K\) de una familia de polinomios no constantes de \(K\).
+
+% (2) \(L/K\) es algebraica y para toda clausura algebraica \(F\) de \(L\) y todo \(K\)-homomorfismo \(\sigma : L \to F\), se verifica \(\sigma(L) = L\), es decir, \(\sigma \in \operatorname{Gal}(L/K)\).
+
+% (3) \(L/K\) es algebraica y existe una clausura algebraica \(F\) de \(L\) que satisface (2).
+
+% (4) \(L/K\) es algebraica y para todo \(\alpha \in L\), el polinomio \(\mathrm{Min}_K(\alpha)\) factoriza completamente en \(L\).
+
+% (5) \(L/K\) es algebraica y todo polinomio irreducible \(p\) de \(K[X]\) que contenga una raíz en \(L\) factoriza completamente en \(L\).
+% \end{theorem}
+
+% \begin{proofbox}
+% (1) implica (2). Sea \(F\) una clausura algebraica de \(L\) y sea \(\sigma : L \to F\) un \(K\)-homomorfismo. Supongamos que \(L\) es el cuerpo de descomposición de \(P\) sobre \(K\), es decir \(L = K(S)\), donde \(S\) es el conjunto de las raíces de los elementos de \(P\) en \(F\). Claramente \(L/K\) es algebraica. Además del Lema 1.8 se deduce que \(\sigma\) permuta las raíces de cada elemento de \(P\) y por tanto \(\sigma(S) = S\). Esto implica que \(\sigma\) es un automorfismo de \(L\).
+
+% (2) implica (3) es obvio.
+
+% (3) implica (4). Supongamos que \(F\) es una clausura algebraica de \(L\) que satisface las condiciones de (3). Si \(\alpha \in L\), entonces \(p = \mathrm{Min}_K(\alpha)\) factoriza completamente en \(F\) y por tanto \(p = (X - \alpha_1) \cdots (X - \alpha_n)\) para ciertos \(\alpha_1, \ldots, \alpha_n \in F\). De la Proposición 1.10 se deduce que para cada \(i = 1, \ldots, n\), existe un \(K\)-isomorfismo \(\sigma : K(\alpha) \to K(\alpha_i)\) tal que \(\sigma(\alpha) = \alpha_i\). Podemos considerar \(\sigma\) como un homomorfismo de \(K(\alpha)\) en \(F\) y aplicar que la extensión \(L/K(\alpha)\) es algebraica para concluir, con el Teorema 2.6, que \(\sigma\) se puede extender a un homomorfismo \(L \to F\), que denotaremos también con \(\sigma\). Por hipótesis \(\alpha_i = \sigma(\alpha) \in L\) y concluimos que \(p\) factoriza completamente en \(L\).
+
+% (4) y (5) son equivalentes pues los polinomios irreducibles de \(K[X]\) que tienen raíces en \(L\) son los de la forma \(a \mathrm{Min}_K(\alpha)\), con \(0 \neq a \in K\) y \(\alpha \in L\).
+
+% (5) implica (1). Si se cumple (5), entonces \(L\) es el cuerpo de descomposición de los polinomios irreducibles de \(K[X]\) que tengan una raíz en \(L\).
+% \end{proofbox}
+
+% \begin{corollary}{Extensiones normales finitamente generadas}{cor_normales_finitamente_generadas}
+% Una extensión finitamente generada es normal si y solo si es el cuerpo de descomposición de un polinomio.
+% \end{corollary}
+
+% \begin{proofbox}
+% Una implicación es obvia y para demostrar la otra, obsérvese que si \(L = K(\alpha_1, \ldots, \alpha_n)/K\) es una extensión normal, entonces \(L\) es el cuerpo de descomposición de \(\prod_{i=1}^n \mathrm{Min}_K(\alpha_i)\).
+% \end{proofbox}
+
+% \begin{corollary}{Clausura algebraica es normal}{cor_clausura_normal}
+% Si \(L\) es una clausura algebraica de \(K\) entonces \(L/K\) es normal.
+% \end{corollary}
+
+% \begin{example}{Ejemplos de extensiones normales}{ej_normales}
+% (1) Todas las extensiones que aparecen en los Ejemplos 2.10 son normales pues se trata de cuerpos de descomposición de un polinomio.
+
+% (2) En particular \(\mathbb{Q}(\sqrt[3]{2}, \omega)/\mathbb{Q}\) es una extensión normal, donde \(\omega = \frac{-1+\sqrt{3}}{2}\). Sin embargo la extensión \(\mathbb{Q}(\sqrt[3]{2})/\mathbb{Q}\) no es normal pues \(\mathrm{Min}_{\mathbb{Q}}(\sqrt[3]{2}) = X^3 - 2\) que tiene tres raíces \(\sqrt[3]{2}, \sqrt[3]{2}\omega\) y \(\sqrt[3]{2}\omega^2\). Como todos los elementos de \(\mathbb{Q}(\sqrt[3]{2})\) son números reales y \(\omega\) no lo es, deducimos que el polinomio \(\mathrm{Min}_{\mathbb{Q}}(\sqrt[3]{2})\) no factoriza completamente en \(\mathbb{Q}(\sqrt[3]{2})\) y, por tanto, la extensión \(\mathbb{Q}(\sqrt[3]{2})/\mathbb{Q}\) no es normal.
+
+% (3) Toda extensión de grado 2 es normal. En efecto, si \(L/K\) es una extensión de grado 2 y \(\alpha \in L \setminus K\), entonces \(L = K(\alpha)\) y por tanto \(p = \mathrm{Min}_K(\alpha)\) tiene grado 2. Como \(p\) tiene una raíz en \(L\), \(p\) es completamente factorizable en \(L\) y por tanto \(L\) es el cuerpo de descomposición de \(p\) sobre \(K\).
+
+% (4) Del ejemplo (3) se deduce que las dos extensiones \(\mathbb{Q}(\sqrt{2})/\mathbb{Q}\) y \(\mathbb{Q}(\sqrt[3]{2})/\mathbb{Q}(\sqrt{2})\) son normales y sin embargo la extensión \(\mathbb{Q}(\sqrt[3]{2})/\mathbb{Q}\) no lo es, pues \(p = \mathrm{Min}_{\mathbb{Q}}(\sqrt[3]{2}) = X^4 - 2\) tiene una raíz en \(\mathbb{Q}(\sqrt[3]{2})\) y no es completamente factorizable en \(\mathbb{Q}(\sqrt[3]{2})\), ya que \(X^4 - 2 = (X^2 - \sqrt{2})(X^2 + \sqrt{2})\) y \(X^2 + \sqrt{2}\) no tiene ninguna raíz en \(\mathbb{Q}(\sqrt[3]{2})\).
+% \end{example}
+
+% Los Ejemplos (2) y (4) de 2.14 muestran que la clase de extensiones normales no es multiplicativa en torres pues si \(K \subseteq E \subseteq L\) es una torre de extensiones

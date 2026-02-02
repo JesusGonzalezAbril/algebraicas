@@ -1,0 +1,40 @@
+\chapter{Clausura algebraica y clausura algebraica de una extensión}
+
+\section{Definiciones}
+Recordemos primero las dos definiciones clave:
+
+\begin{definition}{Clausura algebraica}{}
+  Una extensión \(\overline{K}\) de \(K\) que es algebraica sobre \(K\) y algebraicamente cerrada. Esto significa que todo polinomio no constante con coeficientes en \(\overline{K}\) tiene una raíz en \(\overline{K}\), y además todo elemento de \(\overline{K}\) es algebraico sobre \(K\).
+\end{definition}
+
+\begin{definition}{Clausura algebraica de una extensión}{}
+  Si \(L\) es una extensión de \(K\), se define  la clausura algebraica de $K$ en $L$ como  
+  \[
+  \{ \alpha \in L \mid \alpha \text{ es algebraico sobre } K \},
+  \]
+  es decir, el mayor subcuerpo de \(L\) que es algebraico sobre \(K\). Esta extensión intermedia no es necesariamente algebraicamente cerrada (a menos que \(L\) lo sea).
+\end{definition}
+
+\section{Ejemplos}
+
+Tomemos \(K = \mathbb{Q}, L = \mathbb{R}.\)
+
+\subsection*{Clausura algebraica de \(\mathbb{Q}\)}
+
+La clausura algebraica usual de $\Q$ se denota \(\overline{\mathbb{Q}}\), está formada todos los números complejos algebraicos sobre \(\mathbb{Q}\). Esta contiene, por ejemplo:
+\[
+\sqrt{2}, \quad i, \quad \sqrt[3]{5}, \quad \text{raíces de } x^5 + x + 1, \dots
+\]
+y es algebraicamente cerrada: todo polinomio con coeficientes en \(\overline{\mathbb{Q}}\) tiene raíces en \(\overline{\mathbb{Q}}\). Además es numerable.
+
+\subsection*{Clausura algebraica de \(\mathbb{Q}\) en \(L = \mathbb{R}\)}
+
+Aquí tomamos todos los números reales algebraicos sobre \(\mathbb{Q}\):
+\[
+\{ \alpha \in \mathbb{R} \mid \alpha \text{ es algebraico sobre } \mathbb{Q} \}.
+\]
+Esto es simplemente \(\overline{\mathbb{Q}} \cap \mathbb{R}\).
+
+Contiene a \(\sqrt{2}, \sqrt[3]{5},\) etc., pero no contiene a \(i\) (porque \(i \notin \mathbb{R}\)). Tampoco contiene todas las raíces de polinomios con coeficientes racionales, ya que algunos tienen raíces complejas no reales. 
+
+En este caso, la clausura de \(\mathbb{Q}\) en \(\mathbb{R}\) no es algebraicamente cerrada. Por ejemplo, el polinomio \(x^2 + 1\) tiene coeficientes en \(\mathbb{Q}\), por lo tanto sus coeficientes están en \(\overline{\mathbb{Q}} \cap \mathbb{R}\), pero sus raíces \(i, -i\) no están en \(\mathbb{R}\), por lo tanto no están en \(\overline{\mathbb{Q}} \cap \mathbb{R}\). Así que el cuerpo \(\overline{\mathbb{Q}} \cap \mathbb{R}\) no es algebraicamente cerrado, a pesar de ser algebraico sobre \(\mathbb{Q}\).
